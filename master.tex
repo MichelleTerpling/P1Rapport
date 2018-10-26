@@ -19,9 +19,9 @@
 \input{setup/macros.tex}% my new macros
 
 \begin{document}
-%frontmatter
-\pagestyle{empty} %disable headers and footers
-\pagenumbering{roman} %use roman page numbering in the frontmatter
+% frontmatter
+\pagestyle{empty} % disable headers and footers
+\pagenumbering{roman} % use roman page numbering in the frontmatter
 \input{sections/forside.tex}
 \input{sections/colophon.tex}
 \input{sections/titlepages.tex}
@@ -31,11 +31,12 @@
 \tableofcontents
 \input{sections/forord.tex}
 \cleardoublepage
-%mainmatter
-\pagenumbering{arabic} %use arabic page numbering in the mainmatter
+% mainmatter
+\pagenumbering{arabic} % use arabic page numbering in the mainmatter
 \input{sections/indledning.tex}
 \input{sections/metode.tex}
 \input{sections/problemanalyse.tex}
+\input{sections/problemloesning.tex}
 \input{sections/conclusion.tex}
 \printbibliography[heading=bibintoc]
 \label{bib:mybiblio}

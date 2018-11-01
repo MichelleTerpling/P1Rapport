@@ -120,13 +120,16 @@
 % Bibliography
 % http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[backend=bibtex,
-  bibencoding=utf8
-  ]{biblatex}
-\addbibresource{bib/mybib}
+%\usepackage[backend=bibtex,
+%  bibencoding=utf8
+%  ]{biblatex}
+%\addbibresource{bib/mybib}
 \usepackage[numbers]{natbib} % bibliography
+%\usepackage{biblatex}
 \bibliographystyle{plainnat} % viser referencers url
+
 \usepackage{url} % url formatering
+\usepackage{hyperref}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Misc
@@ -181,3 +184,8 @@
 
 % Noget der skal bruges til tabel 
 \usepackage{graphicx}
+
+% for quotes skriv \say{}
+\usepackage{dirtytalk}
+
+

@@ -1,7 +1,8 @@
-\chapter{Problemløsning}\label{ch:ch3label}
+\chapter{Problemløsning}\label{ch:chlabel}
 
 
 \begin{minted}[frame=lines, framesep=3mm, baselinestretch=1, linenos, bgcolor=LightGray]{c}
+/* Dette er et program der printer "Hello World" 10 gange */
 
 # include <stdio.h>
 
@@ -10,9 +11,24 @@ int main(void) {
     printf("Hello World!");
     
     for (int i = 1; i <= 10; i++) {
-        printf("Hello World!\n");
+        printf("Hello World, %d!\n", i);
     }
     
     return 0;
 }
 \end{minted}
+
+Skal kunne opdateres, så hvis nogen ikke dukker op, kan planen laves igen.\\
+Skal kunne tage resultatet af kampe ind, og skrive ud hvem der skal spille mod hinanden nu.
+\\
+\\
+Input:\\
+ - (unsigned int) Klokkeslæt\\
+ - (int) baner\\
+ - (int) hold\\
+ - (unsigned int) Tid per kamp\\
+ - (unsigned int) Tid mellem kampe\\ 
+ \\
+ Output: \\
+  - En .csv fil (kan åbnes i Excel), med turneringen
+ 

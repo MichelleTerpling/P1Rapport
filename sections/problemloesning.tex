@@ -1,5 +1,19 @@
 \chapter{Problemløsning}\label{ch:chlabel}
 
+% Hvad skal man tage højde for?\\
+ % - Regler\\
+ % Der er et link på Discord om reglerne i Kids floorball\\
+   % - Yngre og ældre spillere\\
+   % - Kids koncept\\
+     % - Kampe tager 6 minutter "løbende tid"
+     % - 1-2 minutters pause mellem kampe
+     % - Skal have en hvilekamp mellem hver kamp, hvis ikke muligt skal kampene gerne foregå på samme bane.
+     % - Alle kampe skal starte og slutte på samme tid
+     % - Der er forskellige niveauer, indeles efter skills og ikke alder.
+ % - Afmeldinger\\
+ % Der opstår problemer i planlægningen, når folk melder fra\\
+ % - Andre ting\\
+ % floorball.dk/staevner/
 
 \begin{minted}[frame=lines, framesep=3mm, baselinestretch=1, linenos, bgcolor=LightGray]{c}
 /* Dette er et program der printer "Hello World" 10 gange */
@@ -17,10 +31,6 @@ int main(void) {
     return 0;
 }
 \end{minted}
-
-Skal kunne opdateres, så hvis nogen ikke dukker op, kan planen laves igen.\\
-Skal kunne tage resultatet af kampe ind, og skrive ud hvem der skal spille mod hinanden nu.
-\\
 \\
 Input:\\
  - (unsigned int) Klokkeslæt\\
@@ -30,8 +40,10 @@ Input:\\
  - (unsigned int) Tid mellem kampe\\ 
  \\
  Output: \\
-  - En .csv fil (kan åbnes i Excel), med turneringen
- 
+  - En .csv fil (kan åbnes i Excel), med turneringen\\
+\\
 Funktioner: \\
- - Skal tage højde for at hold ikke skal spille mange gange i træk\\
+ - Skal tage højde for at hold ikke skal spille mange gange i træk.\\
+ - Skal kunne opdateres, så hvis nogen ikke dukker op, kan planen laves igen.\\
+ - Skal kunne tage resultatet af kampe ind, og skrive ud hvem der skal spille mod hinanden nu.\\
  

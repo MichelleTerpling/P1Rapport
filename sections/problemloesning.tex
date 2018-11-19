@@ -1,20 +1,70 @@
 \chapter{Problemløsning}\label{ch:chlabel}
 
-% Hvad skal man tage højde for?\\
- % - Regler\\
- % Der er et link på Discord om reglerne i Kids floorball\\
-   % - Yngre og ældre spillere\\
-   % - Kids koncept\\
-     % - Kampe tager 6 minutter "løbende tid"
-     % - 1-2 minutters pause mellem kampe
-     % - Skal have en hvilekamp mellem hver kamp, hvis ikke muligt skal kampene gerne foregå på samme bane.
-     % - Alle kampe skal starte og slutte på samme tid
-     % - Der er forskellige niveauer, indeles efter skills og ikke alder.
- % - Afmeldinger\\
- % Der opstår problemer i planlægningen, når folk melder fra\\
- % - Andre ting\\
- % floorball.dk/staevner/
+\section{Design}
+% Masser af flowcharts!!!
 
+\section{Krav til løsningen}
+% Hvilke krav har vi til løsning. Regler osv.
+
+\section{Programmering}
+% Hvordan gør vi rent faktisk det her, helt nede i koden
+
+\subsection*{Programmeringsstil}
+Kommentarer, input og output på dansk. Alt andet på engelsk.\\
+Curly brackets sættes på linjen for funktionen, og den sidste curly bracket skal være på sin egen linje. Der sættes curly brackets, også selvom de kun indeholder én linje kode. To mellemrum som indryk.\\
+
+\section{Test}
+% Test af funktioner
+
+
+
+
+
+\section*{Stikord - Krav til program}
+\begin{itemize}
+    \item KidzLiga regler
+    \begin{enumerate}
+        \item Kampene varer 6 minutter løbende tid.
+        \item 1 til 2 minutter mellem hver kamp.
+        \item Alle hold skal helst have omkring 6 kampe (+/- 1).
+        \item Alle kampe skal starte og slutte på samme tid. 
+        \item Et hold skal helst ikke spille to kampe i træk, de skal helst have én hvile kamp efter hver kamp som minimum. Hvis dette ikke er muligt, skal den næste kamp spilles på den samme bane.
+        \item Der er 4 niveauer i stigende alder og erfaring: N, A, B og C.
+        \item Kampprogrammet skal hænges op i hallen, og skal derfor være præsentabel.
+        \item Det forventes at stævnet varer maks. timer.
+    \end{enumerate}
+    
+    \item Input:
+    \begin{enumerate}
+        \item Holdnavne i en liste, med niveau. Skal stilles op på en bestemt måde.
+        \item Antal baner.
+        \item Starttidspunkt for stævnet.
+        \item Eventuelle pauser.
+        \item En færdig plan der skal opdateres.
+        \item Hold der skal fjernes eller tilføjes.
+    \end{enumerate}
+    
+    \item Output:
+    \begin{enumerate}
+        \item Skal lave kampprogram.
+        \item Skal vise rundenummer.
+        \item Startidspunkt for hver runde.
+        \item Hvilke hold der spiller mod hvem.
+        \item To hold må helst ikke spille mod hinanden 2 gange i træk. Hvis der er hold nok, må to hold ikke spille mod hinanden flere gange.
+        \item Hvilke hold der holder pause.
+    \end{enumerate}
+    
+    \item Funktioner:
+    \begin{enumerate}
+        \item Funktion der kan fjerne og tilføje hold, baseret på runder, og sørger for at tidligere runder ikke bliver lavet om. 
+    \end{enumerate}
+    
+\end{itemize}
+
+% floorball.dk/staevner/
+
+
+% Eksempel på snippet
 \begin{minted}[frame=lines, framesep=3mm, baselinestretch=1, linenos, bgcolor=LightGray]{c}
 /* Dette er et program der printer "Hello World" 10 gange */
 
@@ -22,28 +72,35 @@
 
 int main(void) {
     
-    printf("Hello World!");
+  for (int i = 0; i < 10; i++) {
+    printf("Hello World, %d!\n", i);
+  }
+     
+  return 0;
+} 
+\end{minted}
+
+ 
+\begin{minted}[frame=lines, framesep=3mm, baselinestretch=1, linenos, bgcolor=LightGray]{c}
+
+typedef struct hold {
+    char holdnavn[60];
+    int niveau;
+    /* int antal kampe spillet */
+} hold;
+
+typedef struct kamp {
+    char hold_a[60];
+    char hold_b[60];
+    int niveau;
+} kamp;
+
+int main(void) {
+
+    int stævne[antal runder];
     
-    for (int i = 1; i <= 10; i++) {
-        printf("Hello World, %d!\n", i);
-    }
-    
+    struct kamp runder[antal baner];
+
     return 0;
 }
 \end{minted}
-\\
-Input:\\
- - (unsigned int) Klokkeslæt\\
- - (int) baner\\
- - (int) hold\\
- - (unsigned int) Tid per kamp\\
- - (unsigned int) Tid mellem kampe\\ 
- \\
- Output: \\
-  - En .csv fil (kan åbnes i Excel), med turneringen\\
-\\
-Funktioner: \\
- - Skal tage højde for at hold ikke skal spille mange gange i træk.\\
- - Skal kunne opdateres, så hvis nogen ikke dukker op, kan planen laves igen.\\
- - Skal kunne tage resultatet af kampe ind, og skrive ud hvem der skal spille mod hinanden nu.\\
- 

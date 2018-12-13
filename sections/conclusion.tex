@@ -1,1 +1,35 @@
 \chapter{Konklusion}\label{ch:conclusion}
+% Programmet kører *knipslyd* sådan der.
+Målet med dette projekt, er at gøre det muligt at lave en stævneplan hurtigere og med færre fejl, end det kan gøres manuelt. Desuden var det også målet at gøre det lettere og hurtigere at rette en allerede færdig stævneplan. 
+\\\\
+% Afsnit om en lille test jeg lavede, ved ikke om det skal med. Kunne flyttes til andet afsnit, eller et bilag
+Det antages at programmet er i stand til at lave en stævneplan hurtigere end et menneske. Der er ikke blevet foretaget nogen test, der afgør hvor hurtigt et menneske kan gøre det. Men der blev foretaget en test af programmets tidsforbrug. 
+Testen (Kildekode \ref{code:timeTest}) blev foretaget på funktionen \textbf{\textit{createNewTournament}}. Processen der er testet er fra efter at brugeren har indtastet den nødvendige information, og frem til kaldet af \textbf{\textit{printingMenu}}. Denne del af funktionen tager 0.017 sekunder. Det at udskrive programmet til terminalen altså et af de mulige resultater af \textbf{\textit{printProgram}}, tog 0.161 sekunder. 
+Der skal selvfølgelig tages højde for at brugeren skal bruge tid til at indtaste indformation. Men det antages at selv med dette yderligere tidforbrug lagt til, vil programmet være hurtigere til at udarbejde en stævneplan.
+
+\begin{listing}
+\begin{minted}[frame=lines, framesep=3mm, baselinestretch=1, linenos, bgcolor=LightGray]{c}
+
+clock_t begin = clock();
+
+/* Proces der testes */
+
+clock_t end = clock();
+double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+
+\end{minted}
+\captionof{listing}{Koden bruges til at måle tidsforbruget af en proces. Dette gøres ved at måle antallet af clock-ticks der bruges af en proces, og ved brug af \textbf{\textit{CLOCKS_PER_SEC}} omregnes dette til sekunder}
+\label{code:timeTest}
+\end{listing}
+
+Stævneplanen skal også have færre fejl, end en plan der er lavet manuelt. Dette krav er også opfyldt på den betingelse at det accepteres at der ikke kan være færre end 0 fejl.
+Programmet sammensætter en tilfældig plan, runde efter runde. Hvis den udarbejder en plan der bryder nogle af de opsatte regler, forsøger programmet at lave rettelser. men hvis det ikke er muligt at korrigerer planen, bliver der istedet udviklet en helt ny plan fra bunden. Derfor vil det resulterende program, aldrig bryde med nogle af de hårde regler der blev sat som krav. 
+\\\\
+Der stilles i problemformuleringen også krav til at en stævneplan skal være mere fleksibelt, i form af mulighed for at redigere planen. Dette specificeres yderligere i kravene til programmet, hvor der står at det skal være muligt at tilføje og fjerne hold.
+Programmet lever også op til dette krav. Hvis en bruger ønsker at redigerer programmet, kan der tilgås en menu, hvorfra der enten kan laves en helt ny stævneplan, tilføjes ét eller flere hold, eller fjerne ét eller flere hold. 
+\\
+Den stævneplan der bliver udarbejdet som resultat af ændringer, vil dog igen blive opstillet tilfældigt. Dette betyder at en bruger ikke kan have nogen forventning om at den ændrede stævneplan, ligner den originale.
+\\\\
+% Kort opsummering
+Løsningen er altså i stand til at lave stævneplaner, til kidzliga-stævner, hurtigt og uden fejl. Denne plan er også fleksibel da der er mulig for at lave ændringer hurtigt.
+% lav en flot afslutning og måske en overgang til perspektivering

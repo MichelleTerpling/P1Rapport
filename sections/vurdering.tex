@@ -1,0 +1,32 @@
+\chapter{Vurdering}\label{ch:chlabel}
+% Skriv om hvordan programmet ikke helt laver op til kravene og hvordan det lever op til kravene. Hvad ville vi gerne have lavet også?
+Som en del af problemløsningen i dette projekt, blev der stillet nogle krav til programmet der skulle udgøre løsningen. Dette program er nu blevet gennemgået, og i dette afsnit vil der blive set nærmere på, hvilke af de krav der blev stillet op, programmet lever op til.
+\begin{itemize}
+    \item \textit{En kamp varer seks minutter,\ og der skal være en til to minutters pause mellem hver kamp}. Dette krav bliver opfyldt, ved printningen af programmet. Her starter tiden med det tidspunkt brugeren har tastet ind, og bliver talt om med 8 minutter hvad kamp. På denne måde starter hver runde på det rigtige tidspunkt, brugeren må så selv tage tid til der er gået 6 minutter, og så tage 2 minutters pause.
+    \item \textit{Alle hold der deltager skal have cirka seks kampe.} I programmet er der defineret en symbolsk konstant \textbf{\textit{GAMES\_PR\_TEAM}}, der er sat til 6. Når der skal findes hold til en kamp igennem funktionerne \textbf{\textit{findFirstTeam}} og \textbf{\textit{findSecondTeam}}, er en af betingelserne for at et hold tages med, at de har spillet under 6 kampe. Da der tælles fra 0 til og med 5, ender alle hold med at få maks 6 kampe.
+    \item \textit{Alle kampe i en runde skal startes og afsluttes på samme tid}. Dette krav bliver opfyldt på samme måde som det første krav, da print funktionen kun printer tidspunktet én gang for hver runde, og derfor starter hver runde på samme tid.
+    \item \textit{Alle hold skal have mindst én hvilekamp mellem hver kamp}. Kravet her bliver kun delvist opfyldt. Programmet garanterer ikke at et hold får en hvilekamp mellem hver kamp, men det opfylder den anden del af kravet. Ifølge Kidzliga reglerne, tilstræbes det at hvis holdet skal spille igen med det samme, skal holdet spille på den samme bane som i runden før. Dette overholder programmet, så derfor er dette krav delvist opfyldt.
+    \item \textit{Der er defineret fire forskellige niveauer i Kidzliga: N, A, B og C}. Som beskrevet i implementering \ref{implementering}, er der lavet en enumeration for disse niveauer. Yderligere er der funktioner der konverterer disse enumerationer til og fra typen \textbf{\textit{char}}, som så kan printes.
+    \item \textit{Det udviklede kampprogram skal være opstillet på en præsentabel måde}. Dette krav er subjektivt, men denne projektgruppe mener dette krav er blevet opfyldt. Stævneplanen er sat op så for hver runde, kommer rundenummeret først, med tidspunktet bagefter. Planen er printet ud i kronologisk rækkefølge i en liste. Dette gør planen mere overskuelig, og det er nemt at finde frem til en given runde. Man kan hurtigt finde frem til der hvor man skal spille, ud fra det niveau ens hold er. 
+    \par
+    Desuden gør layoutet det også nemmere at scanne informationer ind igen. Dette er ikke en del af kravet, men det er noget der skal tages hensyn til når det kommer til designet af planen.
+    \item 
+\end{itemize}
+
+Ydereligere, opstilles krav for løsningen, som ikke er direkte stillet af Floorball Danmark. Disse regler fremsættes for at øge kvaliteten af stævneplanen. Et menneske vil naturligt følge dem, men reglerne skal defineres klart, for at et program også overholder dem.
+\begin{itemize}
+    \item \textit{Et hold må ikke spille mere end 2 kampe i træk.} Dette er en udvidelse af reglen om at der skal være en hvilkekamp mellem hver kamp og gælder når dette ikke kan lade sig gøre. 
+    \item \textit{Hvert hold skal spille mod et andet hold igen, så få gange som muligt, og to hold må ikke spille mod hinanden to kampe i træk.} Dette er besluttet for at sikre at hvert hold kommer til at spille med så mange forskellige hold som muligt.
+\end{itemize}
+
+\section{Videreudvikling}
+
+Ting vi gerne vil have tilføjet:\\
+- Generering af stævneplan direkte fra print menuen, øger brugervenlighed og fleksibilitet.\\
+- Backtracking i createTournament, så funktionen ikke starter helt forfra når en regel bliver brudt, men i stedet går et bestemt antal runder tilbage, og arbejder videre derfra.\\
+- Lave ændringer i en stævneplan hvor kampe allerede er blevet spillet.\\ 
+- En funktion der advarer brugeren hvis stævneplanen kommer til at tage for lang tid at spille. Hvis stævnet starter om morgenen klokken 9:00 og slutter klokken 23, kunne der være sket en fejl fra brugerens side.\\
+- Redigeringen af en eksisterende stævneplan, burde lave så få ændringer som muligt, for at minimere forvirring. Dette er især vigtigt, hvis man foretager ændringer mens stævnet er i gang.\\
+- Pointsystem til createTournament, så de krav dette projekt ikke har fået opfyldt, bliver realiseret. \\
+- Mulighed for at ændre bane antal.\\
+- Mulighed for at indsætte pauser.\\

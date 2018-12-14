@@ -2,8 +2,9 @@
 
 INTRODUKTION
 % Ret eller omformuler endelig hvis du har noget bedre
-I dette kapitel beskrives det hvordan et program kan blive til en løsning, på det problem der er opstillet i problemformuleringen. Først ved at formulerer et antal konkrete krav til løsningen. Efterfølgende designes der et program ud fra disse krav. Til sidst
-forklares det hvordan dette design er implementeret, ved at beskrive programmeringsstil og datastruktur. Der gives også beskrivelse og forklaringer af flere funktioner fra kildekoden.
+I dette kapitel stilles der krav til programmet for at løse problemet på den bedste måde. Ud fra disse krav vil der blive lavet et design til løsningen. Til sidst forklares det hvordan dette design er implementeret, og hvorden programmeringen og datastrukturen er stillet op. Der gives også beskrivelser og forklaringer af flere af funktionerne fra kildekoden. 
+
+%det hvordan et program kan blive til en løsning, på det problem der er opstillet i problemformuleringen. Først ved at formulerer et antal konkrete krav til løsningen. Efterfølgende designes der et program ud fra disse krav. Til sidst forklares det hvordan dette design er implementeret, ved at beskrive programmeringsstil og datastruktur. Der gives også beskrivelse og forklaringer af flere funktioner fra kildekoden.
 
 \section{Krav til løsningen}
 For at lave en funktionel løsning til projektets problemformulering, er det nødvendigt at opstille en række krav. Disse krav skaber et overblik over hvilke opgaver løsningen skal være i stand til at fuldføre.
@@ -28,11 +29,15 @@ Ydereligere, opstilles krav for løsningen, som ikke er direkte stillet af Floor
 
 Problemformuleringen nødvendiggør også et krav, om at stævneplanen skal være fleksibel. Det skal være muligt at foretage ændringer i stævneplanen, efter det er blevet udarbejdet. Løsningen tillader brugeren at tilføje og fjerne hold fra stævneplanen. Dette vil gøre stævneplanen mere fleksibel, da brugeren får mulighed for at lave hurtige ændringer i et allerede eksisterende kampprogram.
 \\\\
-Ud fra disse krav er det muligt at designe et program, som er en fyldestgørende løsning på problemformuleringen.
+%Ud fra disse krav er det muligt at designe et program, som er en fyldestgørende løsning på problemformuleringen.
+Ud fra disse krav er det muligt at komme frem til en ide og et overordnet design til programmet, som skal løse problemet. 
+%ved ikke om det er bedre :/
 
 \section{Design}
-Overgang til design. INTRODUKTION.
-Udfra kravene er det muligt at designe et program til at løse problemstillingen. Designet består i at afklare hvordan problemet kan deles op i flere, mere overkommelige opgaver. 
+%Overgang til design. INTRODUKTION.
+Ud fra kravene er det muligt at designe et program til at løse problemstillingen. Designet består i den overordnede ide om hvordan programmet skal fungere og hænge sammen. Samtidigt afklare designet hvordan problemet kan deles op i flere mere overkommelige opgaver, for at gøre det nemmere at udvikle et program. 
+\\\\
+Der er blevet lavet tre flowchart til at beskrive programmets design. Det overordnede flowchart, som viser den grove struktur af programmet. Lav en stævneplan, som viser tanken bag hvordan programmet laver en stævneplan. Til sidst er der rediger stævneplan, som viser tanken om hvordan programmet skal kunne tilføje og fjerne hold fra en eksisterende stævneplan. Det overordnede flowchart bliver gennemgået først.
 
 \begin{figure}[H]
   \centering
@@ -52,7 +57,17 @@ For at løsningen skal være i stand til at overholde de opstillede krav for opr
 \end{itemize}
 Disse informationer er nødvendige at have, for at kunne lave en stævneplan der er opstillet ordentligt og korrekt efter de andre krav og regler. 
 \par
-Holdnavne og niveauer indlæses fra en tekstfil, da der kan være mange hold, og man ellers kan miste overblikket, hvis input tastes gennem terminalen. Når holdnavne skrives ind på en fil bliver det mere overskueligt for brugeren. Dette kræver dog en specifik opsætning af filen, da programmet ellers ikke vil kunne læse den.\\
+Holdnavne og niveauer indlæses fra en tekstfil, da der kan være mange hold, og man ellers kan miste overblikket, hvis input tastes gennem terminalen. Når holdnavne skrives ind på en fil bliver det mere overskueligt for brugeren. Dette kræver dog en specifik opsætning af filen, da programmet ellers ikke vil kunne læse den.
+% Beskrivelse af opsætningen, 
+\\\\
+Kravene til opsætningen er at der skal være ét holdnavn på hver linje, efterfulgt af et komma og holdets niveau. Holdnavnet må indeholde specialtegn, men det første tegn skal være et bogstav.
+Niveauet, der angives med et bogstav, må være både stort og småt.
+% Eksempel
+\\\\
+Holdnavn1, Niveau\\
+Holdnavn2, Niveau\\
+...\\
+
 Antallet af hold og starttidspunktet indlæses gennem terminalen, da disse er enklere for brugeren at taste ind.
 \par
 Herefter sammensættes stævneplanen. Dette sker ved brug af tilfældig sammensætning af kampe og runder, hvorefter hver runde evalueres, og der tælles fejl i forhold til hvor mange gange de vigtigste reglerne er blevet brudt. Hvis runden ingen fejl har, godkendes den, ellers bliver den sammensat anderledes indtil den er acceptabel. Hvis der ikke kan findes en rundesammensætning, som overholder de opstillede regler, startes processen forfra.\\
@@ -84,21 +99,23 @@ Måden hvorpå programmet redigerer en eksisterende stævneplan er illustreret p
 \par
 Efterfølgende indlæses informationerne fra en fil med den eksisterende stævneplan, på en sådan måde, at det er muligt at arbejde med dem. Dette skal dog kun gøres én gang, inden der foretages ændringer. Efterfølgende kan der foretages flere ændringer indtil brugeren er tilfreds. Disse ændringer foretages en af gangen. 
 \par
-Herefter bearbejdes informationen, sådan at den stemmer overens med de ændringer brugeren ønsker. Til sidst fremstilles en stævneplan med ændringerne, på samme måde som der fremstilles en ny stævneplan. Brugeren har så mulighed for at printe stævneplanen, enten i terminalen eller til en fil. I terminalen kan stævneplanen inspiceres, og der er mulighed for at lave yderligere ændringer eller generere stævneplanen igen, før det færdige kampprogram gemmes.
+Herefter bearbejdes informationen, sådan at den stemmer overens med de ændringer brugeren ønsker. Dette kan ses i kildekode \ref{code:updateTournament} side \pageref{code:updateTournament}. Til sidst fremstilles en stævneplan med ændringerne, på samme måde som der fremstilles en ny stævneplan. Brugeren har så mulighed for at printe stævneplanen, enten i terminalen eller til en fil. I terminalen kan stævneplanen inspiceres, og der er mulighed for at lave yderligere ændringer eller generere stævneplanen igen, før det færdige kampprogram gemmes.
 \par
-For at gøre programmet mere fleksibelt, ville muligheden for at redigere i en stævneplan, hvor stævnet allerede er startet, være optimal. Der kan opstå situationer, hvor et hold enten er forhindret i at møde til tiden, eller er nødt til gå tidligere. Her ville muligheden for at ændre planen fra et bestemt tidspunkt gøre programmet mere fleksibelt. I dette projekt, prioriteres denne funktionalitet lavere end muligheden for at tilføje og fjerne hold, da dette vurderes til at være vigtigere.\\
+For at gøre programmet mere fleksibelt, ville muligheden for at redigere i en stævneplan, hvor stævnet allerede er startet, være optimal. Der kan opstå situationer, hvor et hold enten er forhindret i at møde til tiden, eller er nødt til gå tidligere. Her ville muligheden for at ændre planen fra et bestemt tidspunkt gøre programmet mere fleksibelt. I dette projekt, prioriteres denne funktionalitet lavere end muligheden for at tilføje og fjerne hold, da dette vurderes til at være vigtigere.
+\subsection*{Opsamling} 
+Dette er ideen og designet bag programmets virkemåde og opsætning. Programmet består af to "grene", hvor den ene "gren" skal kunne lave en stævneplan, mens den anden skal kunne redigere den stævneplan.  
 
 
 \section{Implementering}\label{implementering}
-INTRODUKTION
 % Hvilke antagelser der er i forhold til at programmet skal kører ordentligt.
 % Hvordan gør vi rent faktisk det her, helt nede i koden
 % Forklaring af snippets
-Dette afsnit handler om implementerignen af løsningen. I afsnittet beskrives den programmeringsstil der er anvendt i projektet. Datastruktureren der er brugt i kildekoden forklares, og der argumenteres for valgene i denne forbindelse. Til sidst beskrives nogle af de centrale funktioner fra kildekoden, med tilhørende forklaringer og kodeeksempler.
+Dette afsnit handler om implementeringen af løsningen. Den måde koden er implementeret og opsat på, tager udgangspunkt i det design der er blevet lavet og beskrevet i forrige afsnit.
+I dette afsnit beskrives den programmeringsstil der er anvendt i projektet. Datastruktureren der er brugt i kildekoden forklares, og der argumenteres for valgene i denne forbindelse. Til sidst beskrives nogle af de centrale funktioner fra kildekoden, med tilhørende forklaringer og kodeeksempler.
 
 \subsection*{Programmeringsstil}
 Som programmeringsstil, bruges en modificeret version af C Coding Standard \cite{codingstyle}.
-En af disse modifikationer er at betingelser i eksempelvis if-else kæder, har konstanten placeret til højre, i stedet for til venstre som standarden anbefaler, som det kan ses i kodeeksempel  \ref{code:conditionStyle}.
+En af disse modifikationer er at betingelser i eksempelvis if-else kæder, har konstanten placeret til højre, i stedet for til venstre som standarden anbefaler, som det kan ses i kodeeksempel  \ref{code:conditionStyle} (s. \pageref{code:conditionStyle}).
 \begin{listing}[H]
 \begin{minted}[frame=lines, framesep=3mm, baselinestretch=1, linenos, bgcolor=LightGray]{c}
 /* Som standarden foreskriver: */
@@ -135,17 +152,17 @@ if (var == 0) {
 \end{listing}
 
 Der tilstræbes at antallet af tegn per linje er 78 \cite{codingstyle}, for at øge læsbarheden, men der er dog nogle undtagelse til denne regel. Dette skyldes at nogle af programmets funktioner har mange parametre, og dermed overskrider de 78 tegn.\\
-I forhold til selve sproget, som der skrives med i kildekoden, er input, output og kommentarer skrevet på dansk. Selve koden er skrevet på engelsk.
+I forhold til selve sproget, som der skrives med i kildekoden, er input, output og kommentarer skrevet på dansk, mens selve koden er skrevet på engelsk.
 
 \subsection*{Datastruktur}
-I programmet er der opsat en fast datastruktur. Dette er gjort for at gøre det muligt at arbejde med problemet på en mere intuitiv og overskuelig måde. I dette afsnit, vil denne datastruktur blive beskrevet.
+Udover en fast programmeringsstil i programmet, er der også opsat en fast datastruktur. Dette er for at gøre det muligt at arbejde med problemet på en mere intuitiv og overskuelig måde. I dette afsnit, vil denne datastruktur blive beskrevet.
 \par
-Problemet omhandler Kidzliga stævner i floorball, som består af en samling af flere kampe, der er inddelt i runder. Der afvikles én kamp per bane i hver runde. En kamp foregår mellem to hold af samme niveau.\\
-For at få datastrukturen til at afspejle denne opstilling, er der i kildekoden defineret to datatyper, der hver består af en struct. Disse kan ses i kildekode \ref{code:teamStruct} og \ref{code:matchStruct}.
+Problemet omhandler Kidzliga stævner i floorball, som består af en samling af flere kampe, der er inddelt i runder. Der afvikles én kamp per bane i hver runde og en  kamp foregår mellem to hold af samme niveau.\\
+For at få datastrukturen til at afspejle denne sammensætning, er der i kildekoden defineret to datatyper, der hver består af en struct. Disse kan ses i kildekode \ref{code:teamStruct} og \ref{code:matchStruct}.
 
 \subsubsection{Team struct}
 En instans af \textbf{\textit{team}} structen (kildekode \ref{code:teamStruct}), indeholder al den information der er relevant for et enkelt hold i et floorball-stævne. \\
-Informationen er opdelt i structens members, der indeholder holdets navn i en streng, et heltal med antallet af kampe de har spillet, et heltal med holdets niveau, to heltal med tidspunktet hvor det enkelte hold starter stævnet og tidspunktet hvor de er færdige med stævnet. 
+Informationen er fordelt på structens members, der består af holdets navn i en streng, et heltal med antallet af kampe de har spillet, et heltal med holdets niveau, to heltal med tidspunktet hvor det enkelte hold starter stævnet og tidspunktet hvor de er færdige med stævnet. Denne tid måles i minutter fra kl. 00:00.
 De sidste to members, start- og sluttidspunkt, er kun relevante hvis et hold ikke skal deltage i hele stævnet. Dette kunne eksempelvis være i tilfælde hvor et hold bliver nødt til at møde op til stævnet, efter det allerede er begyndt. 
 I sådanne situationer ønskes det at de stadig skal have mulighed for at deltage, hvilket nødvendiggør at denne information er tilgængelig.
 \begin{listing}[H]
@@ -202,26 +219,40 @@ Datastrukturen, der gøres brug af i dette projekt, består ikke kun i definitio
 Ligeledes er alle holdene der deltager i stævnet, samlet i et array, med elementer af typen \textbf{\textit{team}}.
 \par
 Når der i kildekoden arbejdes med et af de arrays som er beskrevet ovenfor, eksempelvis i en funktion, sendes antallet af aktuelle elementer også med. Dette gør det lettere at arbejde med disse arrays, da det ikke er muligt at finde frem til størrelsen, når et array bruges i en funktion.
+\\\\
+Disse datastrukturer bliver brugt gennem hele koden og er måden informationbliver sendt rundt mellem de forskellige funktioner, som man kan se i selve kildekoden.
 
 \subsection*{Udvalgte eksempler på kildekode}
-INTRODUKTION
+I dette afsnit bliver der gennemgået forskellige udsnit af kildekoden i programmet. Denne kildekode vil blive forklaret og der vil blive argumenteret for de valg der et blevet taget i selve programmeringen. Først vil der blive gennemgået hvilke antagelser der er blevet sat op for at programmet kan virke.
+\\\\
+% Antagelser
+Programmet er lavet ud fra visse antagelser, om forholdene i stævnet. En af dem er at der minimalt er 10 hold i hvert niveau. Denne antagelse er nødvendig for at et hold ikke kommer til at spille mod de samme modstandere for ofte. 
+\\
+Der er også placeret en restriktion på hvor mange baner, der maksimalt er tilladt. Da det bliver en udfordring for programmet at sammensætte en korrekt stævneplan, hvis der er for mange baner.
+
+\\
+På baggrund af disse antagelser bliver funktionen createNewTournament først beskrevet, da denne funktion skal køres første gang for at lave den første stævneplan.
 
 \subsubsection{createNewTournament}
 I dette afsnit gennemgås \textbf{\textit{createNewTournament}}-funktionen, med forklaringer og argumenter for den valgte implementering (kildekode \ref{code:createNewTournament}). 
 Når brugeren fra hovedmenuen vælger at lave en ny stævneplan, indhenter programmet antal baner, starttidspunkt og navnet på input-filen fra brugeren. Denne fil skal indeholde en liste af holdnavne med tilhørende niveauer. Filen scannes to gange i løbet af funktionen. I starten scannes der for at få antal hold, hvilket også svarer til antal linjer, der ikke er tomme i filen (l. 29).
 \par
 \textbf{\textit{number\_of\_matches}} udregnes herefter, fordi det er nødvendigt for at udregne antallet af runder der skal være i stævneplanen. Da der i kravene står, at hvert hold skal spille ca. 6 kampe, vil udregningen se således ud:
-\[\frac{6\ * \ (number\_of\_teams)}{2}\]
+\[\frac{6\ * \ number\_of\_teams}{2}\]
 Der divideres, derudover, med 2, da hver kamp indeholder to hold, og derfor tælles dobbelt i forhold til udregningen af antallet af kampe. (l. 32)
 \par
-Funktionen \textbf{\textit{getNumberOfRounds}} (l. 35) udregner antallet af runder \textbf{\textit{number\_of\_matches}} svarer til. Da der regnes med heltal vil decimaltal blive rundet ned når der divideres. Dette er dog ikke hensigtsmæssigt i forhold til udregningen, da der i nogle tilfælde så vil mangle en runde. Funktionen kigger derfor om resten af $number\_of\_rounds \ mod(number\_of\_fields)$ er lig med nul eller ej. Hvis den er det kan der bare divideres uden ekstra tilføjelser. Ligning vil hermed se således ud:
-\[\frac{antal \ kampe}{antal \ baner}\]
-Hvis ikke dette er tilfældet, så er der behov for at addere 1 til resultatet, for at få den manglende runde med, og ligningen vil derfor være 
-\[\frac{antal \ kampe}{antal \ baner} + 1\]
-Herefter allokeres der plads til et array \textbf{\textit{all\_teams}}, som vil indeholde alle hold (l. 39). Dette gøres med malloc, da der ikke er noget behov for at nulstille elementerne i arrayet før det bruges. Dette skyldes, at arrayets elementer alligevel bliver erstattet med holdnavne, så det er lige meget, hvad der tidligere var i det bestemte element. Dette sker gennem \textbf{\textit{fillArray}} funktionen, som scanner filen med holdnavnene en anden gang for at kopier holdnavnene over i \textbf{\textit{all\_teams}}.
+Funktionen \textbf{\textit{getNumberOfRounds}} (l. 35) udregner antallet af runder \textbf{\textit{number\_of\_matches}} svarer til. Da der regnes med heltal vil decimaltal blive rundet ned når der divideres. Dette er dog ikke hensigtsmæssigt i forhold til udregningen, da der i nogle tilfælde vil mangle en runde. Funktionen kigger derfor om resten af $number\_of\_rounds \ mod(number\_of\_fields)$ er lig med nul eller ej. Hvis den er lig med nul, kan der bare divideres uden ekstra tilføjelser. Formel vil hermed se således ud:
+\[\frac{number\_of\_matches}{number\_of\_fields}\]
+Hvis ikke dette er tilfældet, så er der behov for at addere 1 til resultatet, for at få den manglende runde med, og formlen vil derfor være 
+\[\frac{number\_of\_matches}{number\_of\_fields} + 1\]
+\\
+Herefter allokeres der plads til et array \textbf{\textit{all\_teams}}, som vil indeholde alle hold (l. 39). Dette gøres gennem funktionen \textbf{\textit{allocateMemoryMatch}}, hvor der bruges malloc, da der ikke er noget behov for at nulstille elementerne i arrayet før det bruges. Dette skyldes, at arrayets elementer alligevel bliver erstattet med holdnavne, så det er lige meget, hvad der tidligere var i det bestemte element. Dette sker gennem \textbf{\textit{fillArray}} funktionen, som scanner filen med holdnavnene en anden gang for at kopier holdnavnene over i \textbf{\textit{all\_teams}}.
+\\
+Der bliver brugt dynamisk allokering fremfor statisk allokering, fordi størrelsen på arrayet afhænger af \textbf{\textit{number\_of\_matches}}, som ikke er et fast tal. Da \textbf{\textit{number\_of\_matches}} beregnes ud fra \textbf{\textit{number\_of\_teams}}, som afhænger af antallet af holdnavne der står i filen. 
 \par
-Der bliver også allokeret plads til \textbf{\textit{tournament}}-arrayet (l. 47). Dette array er hvor de forskellige kampe vil blive sat ind efter den rækkefølge de vil fremkomme i den endelige fil for stævneplannen. Arrayet vil blive fyldt gennem \textbf{\textit{createTournament}}-funktionen, som har til formål at sætte en stævneplan sammen, sådan at de krav der er stilt bliver overholdt. Er dette dog ikke muligt, og der bliver returneret til \textbf{\textit{no\_go\_count}} et tal, som er over 0, bliver funktionen kørt igen.
-\textbf{\textit{no\_go\_count}} repræsenterer antallet af gange et a kravene ikke overholdes.
+Der bliver også allokeret plads til \textbf{\textit{tournament}}-arrayet (l. 47). Dette array er hvor de forskellige kampe vil blive sat ind efter den rækkefølge de vil fremkomme i den endelige fil for stævneplannen. Arrayet vil blive fyldt gennem en do-while løkke, som kalder \textbf{\textit{createTournament}}-funktionen. Denne funktion har til formål at sætte en stævneplan sammen, sådan at de krav der er fastsat bliver overholdt. Er dette ikke muligt, returneres et tal til \textbf{\textit{no\_go\_count}}, som bestemmer hvorvidt løkken skal køres igen eller ej.
+\\
+\textbf{\textit{no\_go\_count}} repræsenterer antallet af gange et af kravene ikke overholdes. Programmet er struktureret på en sådam en måde, at så længe \textbf{\textit{no\_go\_count}} ikke er nul køres \textbf{\textit{createTournament}} igen.
 \\
 Hver gang \textbf{\textit{createTournament}} skal køres er det nødvendigt at nulstille \textbf{\textit{games}} fra \textbf{\textit{all\_teams}} arrayet, da der startes på ny med sammensætningen af kampe i runder, og derfor er der ingen hold der har spillet endnu.
 \par
@@ -308,24 +339,28 @@ int createNewTournament(void) {
 \end{listing}
 
 \subsubsection{CreateTournament}
+Funktionen \textbf{\textit{createTournament}} bliver kaldt \textbf{\textit{createNewTournament}}-funktionen.
 Formålet med funktionen \textbf{\textit{createTournament}} er at sætte kampe sammen til runder, der tilsammen danner stævneplanen. \\
-Efter de relevante variable er erklæret, allokeres der plads til to arrays (l. XXX kildekode \ref{code:createTournament}). Disse bruges til at holde styr på hvilke hold der spiller i hver kamp i en given runde. Det ene array indeholde det ene hold i kampen (hold a) og det andet indeholder det andet hold kampen (hold b). Hvert element i de to arrays repræsenterer således en kamp og værdien af elementet svarer til indekset i \textbf{\textit{all\_teams}} arrayet for de hold der spiller i kampen. Herved dannes der to lister med holdene i hver kamp, som der nemt kan redigeres i.
+Efter de relevante variable er erklæret, allokeres der plads til to arrays (l. XXX kildekode \ref{code:createTournament}). Disse bruges til at holde styr på hvilke hold der spiller i hver kamp i en given runde. Det ene array indeholder det ene hold i kampen (hold a) og det andet indeholder det andet hold i kampen (hold b). Hvert element i de to arrays repræsenterer således en kamp og værdien af elementet svarer til indekset i \textbf{\textit{all\_teams}} arrayet for de hold der spiller i kampen. Herved dannes der to lister med holdene i hver kamp, som der nemt kan redigeres i.
 \par
 I en for-løkke (l. XXX) dannes en runde af gangen. Indekset for den første kamp i den seneste runde samt den nye runde, udregnes som produktet af rundenummeret og antal baner. \\
-Indekset for den sidste kamp i runden bliver returneret fra funktionen \textbf{\textit{createRound}} (Kildekode \ref{code:createRound}). Denne funktion går igennem hver kamp i runden og finder to tilfældige hold til at spille den. De to hold findes på lignende vis, men med visse forskellige. Funktionen \textbf{\textit{findFirstTeam}} (Kildekode \ref{findFirstTeam}) producerer et tilfældigt tal ud fra tiden når programmet køres og finder resten ved division med antal hold. Således opnås et tal indenfor intervallet af indexer i \textbf{\textit{all\_teams}} arrayet. Herefter checkes det om holdet med dette index kan spille i kampen. Hvis holdet endnu ikke har spillet seks kampe og dets niveau ikke er sat til "tom", bliver holdet og dets informationer kopieret over i \textbf{\textit{match}} structen for den gældende kamp. \\
-For hvert tilfældigt genereret tal, der ikke opfylder kravene i if-sætningen, tælles et flag op med en og hvis et tal der overholder if-sætningens regler findes sættes flaget til et tilstrækkeligt stort tal. While-løkken fortsætter så længe flaget er under dette tal. Dette gøres fro at sikre at while-løkken ikke kører uendeligt, da den enten stoppes fordi et passende hold er fundet eller den har været igennem så mange tilfældigt udvalgte hold der ikke kan bruges, at det antages at der ikke findes et hold, der overholder reglerne.\\
-Det andet hold i kampen findes på lignende vis, dog er kriterierne for et hold der kan spille i kampen lidt anderledes. if-sætningen der skal finde det andet hold er sand når dette hold er forskellig fra, men har samme niveau som det første hold og det har spillet mindre end seks kampe.\\
+Indekset for den sidste kamp i runden bliver returneret fra funktionen \textbf{\textit{createRound}} (Kildekode \ref{code:createRound}). Denne funktion går igennem hver kamp i runden og finder to tilfældige hold til at spille den. De to hold findes på lignende vis, men med visse forskelle. Funktionen \textbf{\textit{findFirstTeam}} (Kildekode \ref{findFirstTeam}) producerer et tilfældigt tal ud fra tiden når programmet køres og finder resten ved division med antal hold. Således opnås et tal indenfor intervallet af indekser i \textbf{\textit{all\_teams}} arrayet. Herefter tjekkes det om holdet med dette indeks kan spille i kampen. Hvis holdet endnu ikke har spillet seks kampe og dets niveau ikke er sat til "tom", bliver holdet og dets informationer kopieret over i \textbf{\textit{match}} structen for den gældende kamp. \\
+For hvert tilfældigt genereret tal, der ikke opfylder kravene i if-sætningen, tælles et flag op med én. Hvis et tal der overholder if-sætningens regler findes sættes flaget til et tilstrækkeligt stort tal, da while-løkken fortsætter så længe flaget er under dette tal. Dette gøres for at sikre at while-løkken ikke kører uendeligt, da den enten stoppes, fordi et passende hold er fundet eller den har været igennem så mange tilfældigt udvalgte hold der ikke kan bruges, at det antages at der ikke findes et hold, der overholder reglerne.\\
+Det andet hold i kampen findes på lignende vis, dog er kriterierne for et hold, der kan spille i kampen, lidt anderledes. If-sætningen der skal finde det andet hold er sand, når dette hold er forskellig fra, men har samme niveau som, det første hold, og det har spillet mindre end seks kampe.\\
 Begge hold kopieres derefter over i \textbf{\textit{tournament}} arrayet på den næste ledige plads. \\
-Når to hold er fundet til alle kampene i runden returnerer \textbf{\textit{createRound}} indexet for hvor langt den på nuværende tidspunkt er kommet i \textbf{\textit{tournament}} arrayet. Arraysne med begge hold til hver kamp i runden, samt \textbf{\textit{tournament}} arrayet returneres gennem parametrene til funktionen. \\
-Efter runden er dannet evalueres den i funktionen \textbf{\textit{evaluateRound}}. Her bliver en variable erklæret,\textbf{\textit{no\_go\_count}}, der skal tælle antallet af uacceptable fejl i runden, altså antallet af gange runden ikke overholder de fastsatte regler (se afsnit OM KRAV). Hver kamp i runden gennemgås og to if-sætninger tæller \textbf{\textit{no\_go\_count}} op hvis et af holdene i kamp enten allerede spiller i runden eller hvis de spiller i runden før, men ikke på samme bane. Herefter returneret værdien af \textbf{\textit{no\_go\_count}}. \\
+Når to hold er fundet til alle kampene i runden, returnerer \textbf{\textit{createRound}} indekset for hvor langt den på nuværende tidspunkt er kommet i \textbf{\textit{tournament}} arrayet. De arrays med begge hold til hver kamp i runden, samt \textbf{\textit{tournament}} arrayet returneres gennem parametrene til funktionen. \\
+Efter runden er dannet evalueres den i funktionen \textbf{\textit{evaluateRound}}. Her bliver en variable erklæret,\textbf{\textit{no\_go\_count}}, der skal tælle antallet af uacceptable fejl i runden, altså antallet af gange runden ikke overholder de fastsatte regler (se afsnit OM KRAV). Hver kamp i runden gennemgås og to if-sætninger tæller \textbf{\textit{no\_go\_count}} op hvis et af holdene i kamp enten allerede spiller i runden eller hvis de spiller i runden før, men ikke på samme bane. Herefter returneres værdien af \textbf{\textit{no\_go\_count}}. \\
 Hvis \textbf{\textit{no\_go\_count}} er større end nul, altså hvis bare en af kampene i runden ikke lever op til kravene, trækkes en fra antallet af gange hvert hold i runden har spillet, så det svarer til hvad det var før runden blev genereret. den variable der tælle antallet af runder der indtil videre er dannet tælles også en ned, hvilket bevirker at runden bliver genereret på ny. Også her sikrer et flag at rundedannelsen ikke løber uendeligt. \\
-Når alle runder er dannet succesfuldt, frigøres arraysne med hold a og hold b og \textbf{\textit{no\_go\_count}} bliver returneret fra funktionen. 
+Når alle runder er dannet succesfuldt, frigøres de array der inderholder hold a og hold b og \textbf{\textit{no\_go\_count}} bliver returneret fra funktionen. 
 
 \begin{listing}[H]
 \begin{minted}[frame=lines, framesep=3mm,baselinestretch=1, linenos, bgcolor=LightGray]{c} 
 /* Laver en turneringsplan, som returnerer antallet 
    af gange planen bryder med reglerne. */
-int createTournament(team *all_teams, const int number_of_teams, match *tournament, const int number_of_matches, const int number_of_fields, const int number_of_rounds) {
+int createTournament(team *all_teams, const int number_of_teams, 
+                     match *tournament, const int number_of_matches, 
+                     const int number_of_fields, 
+                     const int number_of_rounds) {
   int i = 0;
   int round_count = 0;
   int end_of_round = 0;
@@ -340,18 +375,24 @@ int createTournament(team *all_teams, const int number_of_teams, match *tourname
   team_b = (int *) malloc (number_of_fields * sizeof(int));
 
   /* Kører igennem hver runde. */
-  for (round_count = 0; round_count < number_of_rounds; round_count++) {
+  for (round_count = 0; round_count < number_of_rounds; 
+       round_count++) {
     start_of_round = round_count * number_of_fields;
     start_of_next_round = (round_count + 1) * number_of_fields;
 
-    end_of_round = createRound(tournament, all_teams, team_a, team_b, start_of_next_round, start_of_round, number_of_teams, number_of_fields);
+    end_of_round = createRound(tournament, all_teams, team_a, team_b, 
+                               start_of_next_round, start_of_round, 
+                               number_of_teams, number_of_fields);
 
     /* Tjekker om programmet overholder reglerne. */
-    no_go_count = evaluateRound(tournament, end_of_round, number_of_fields);
+    no_go_count = evaluateRound(tournament, end_of_round, 
+                                number_of_fields);
 
-    /* Hvis reglerne ikke overholder reglerne sammensættes runden på ny. */
+    /* Hvis reglerne ikke overholder reglerne sammensættes
+       runden på ny. */
     if (no_go_count > 0 && sentinel_count < CHECK_NUM) {
-      /* Sætter antallet af kampe tilbage til det den var før runden blev sammensat. */
+      /* Sætter antallet af kampe tilbage til det den var
+         før runden blev sammensat. */
       for (i = 0; i < number_of_fields; i++) {
         all_teams[team_a[i]].games--;
         all_teams[team_b[i]].games--;
@@ -378,48 +419,30 @@ int createTournament(team *all_teams, const int number_of_teams, match *tourname
 \end{listing}
 
 \subsubsection{Opdater Kampprogram}
-I dette afsnit gennemgås \textbf{\textit{updateTournament}}-funktionen, med forklaringer og argumenter for den valgte implementering (kildekode \ref{code:updateTournament}).
+I dette afsnit gennemgås \textbf{\textit{updateTournament}}-funktionen, med forklaringer og argumenter for den valgte implementering (kildekode \ref{code:updateTournament} side \pageref{code:updateTournament}).
 \par
-Denne funktion kaldes i \textbf{\textit{mainMenu}}-funktionen, hvis brugeren vælger mulighed 2. Funktionen kaldes med en enkelt parameter, i form af en pointer til en variabel af typen \textbf{\textit{FILE}}. Denne fil, med navnet "tuneringsplan.txt"\ skal indeholde en stævneplan. Formatet skal være det samme som programmet selv opstiller, hvilket selvfølgelig vil være tilfældet hvis filen blev lavet af programmet.
-% Programmet returner et heltal.
+Denne funktion kaldes i \textbf{\textit{mainMenu}} (figur [REFERENCE]), hvis en bruger vælger at redigerer en eksisterende stævneplan. Funktionen kaldes med en enkelt parameter, der er en fil med den eksisterende stævneplan. Formatet skal være det samme som programmet selv opstiller, hvilket selvfølgelig vil være tilfældet hvis filen blev lavet af programmet. Dette format er beskrevet i designafsnittet.
 \par
-Når funktionen køres, er det første der sker efter initialisering af variablerne, at kalde funktionen \textbf{\textit{getNumberOfTeamsTournament}} der returner antallet af forskellige hold i den given fil. Dette heltal gemmes i variablen \textbf{\textit{number\_of\_teams}}, hvorefter det udskrives til terminalen. 
+Efter initialiseringen af variablerne, er den første opgave at antallet af hold der allerede deltager i stævnet, ved at kalde \textbf{\textit{getNumberOfTeamsTournament}}, der tæller antallet af unikke holdnavne i stævneplanen. 
 \par
-Herefter kaldes \textbf{\textit{editMenu}}-funktionen, der prompter brugeren for hvilke ændringer der skal foretages, og efterfølgende kalder de nødvendige funktioner. Funktionen \textbf{\textit{editMenu}} returnerer en pointer til \textbf{\textit{all\_teams}}-arrayet, med elementer af type \textbf{\textit{team}}. 
+Herefter bliver brugeren præsenteret for en menu, lavet af \textbf{\textit{editMenu}} (figur [REFERENCE]), der giver muligheder for redigering af stævneplanen. Resultatet af denne funktion er et array \textbf{\textit{all\_teams}}, der indeholder alle de hold, der skal deltage i stævnet. Funktionen \textbf{\textit{modifyTeams}}, som er den der redigerer \textbf{\textit{all\_teams}}, bliver gennemgået på side \pageref{modifyTeamsAfsnit}.
 \par
-I \textbf{\textit{editMenu}} kan brugeren vælge at tilføje eller fjerne hold. Hvis brugeren vælger at tilføje et hold, bliver \textbf{\textit{addTeams}}-funktionen kaldt. Brugeren skal herefter indtaste antallet af hold der skal tilføjes. Ud fra antallet af nye hold, bliver der allokeret plads til \textbf{\textit{new\_teams}}-arrayet, af type \textbf{\textit{team}} ved hjælp af \textbf{\textit{allocateMemoryTeams}}-funktionen. Derefter udregnes det samlede antal af hold, som skal bruges når der allokeres plads til arrayet med alle hold. Denne værdi gemmes igennem en pointer til \textbf{\textit{number\_of\_teams}}.
+Hvis brugeren ikke ønsker at lave ændringer, vil \textbf{\textit{all\_teams}}-array forblive NULL. Hvis dette er tilfældet skal \textbf{\textit{updateTournament}} ikke foretage sig yderligere. Derfor tjekkes der i linje 20, om arrayet stadig er NULL. Hvis det er tilfældet returner funktionen 1, hvilket betyder at der ikke blev foretaget nogle ændringer.
 \par
-Hvis det er første gang at brugeren tilføjer hold, bliver holdnavne og niveau på de eksisterende hold, scannet ind ved hjælp af \textbf{\textit{scanFileForTeams}}-funktinen, som returnerer \textbf{\textit{all\_teams}}-arrayet af typen \textbf{\textit{team}} (Denne funktion bliver beskrevet i afsnit [INDSÆT REFERENCE]). Dette array indeholder holdnavne og niveau, for alle de hold der allerede er i stævneplanen. 
+Ellers fortsætter programmet, ved at udregne antallet af kampe i turneringen. Her gøres brug af den samme formel som i kildekode \ref{code:createNewTournament} på side \pageref{code:createNewTournament}.
 \par
-Hvis det ikke er første gang der tilføjes hold, bliver arrayet med alle hold flyttet over i et større array, med plads til de nye hold, ved hjælp af \textbf{\textit{updateTeams}}-funktionen, som også returnerer \textbf{\textit{all\_teams}}-arrayet. 
+Herefter starter processen med at opdaterer stævneplanen, ved at allokerer plads til arrayet \textbf{\textit{tournament}}, der indeholder alle de kampe der skal spilles i stævnet.
+Denne pladsalokerring udføres af \textbf{\textit{allocateMemoryTournament}}. Der returnerer en pointer til det allokerede array.
 \par
-Når \textbf{\textit{all\_teams}} er blevet opdateret eller oprettet, printes alle de nuværende hold til terminalen, så brugeren får et overblik over, hvilke hold der allerede er i stævnet. Derefter promptes brugeren for at skrive holdnavn og niveau ind, for hvert af de hold de vil tilføje, ved hjælp af \textbf{\textit{getNewTeams}}-funktionen. Denne funktion er af typen \textbf{\textit{void}}, men den har \textbf{\textit{new\_teams}} som output parameter. Funktionen \textbf{\textit{checkTeam}} holder også styr på om det hold brugeren forsøger at tilføje, allerede er i \textbf{\textit{all\_teams}}. 
+For at opstille en stævneplan er det nødvendigt at finde antallet af baner og antallet af runder. Antallet af baner findes ved brug af \textbf{\textit{getNumberOfFields}}. Der finder antallet af baner i den originale stævneplan, da det antages at antallet af baner ikke har ændret sig.
+Antallet af runder udregnes af \textbf{\textit{getNumberOfFields}}, ud fra antallet af baner og antallet af kampe. 
+Med disse værdier kan stævnet herefter sammensættes på ny af \textbf{\textit{createTournament}}, sådan at den er justeret til de ændringer brugeren ønskede.
+For at stille det op er det nødvendigt at kende stævnets starttidspunkt.
+Det antages at dette ikke har ændret sig, og derfor kan det findes i den den gamle stævneplan med \textbf{\textit{getStartingTime}}.
 \par
-Efter de nye hold er blevet scannet ind, kopieres de over i arrayet med resten af holdene, ved hjælp af funktionen \textbf{\textit{copyTeams}}. Denne funktion er også af typen \textbf{\textit{void}}, men den har \textbf{\textit{all\_teams}} som outputparameter.
+Det er nu muligt at opstille en ny stævneplan der tager højde for ændringerne. Dette gøres ved at kalde \textbf{\textit{printingMenu}} (figur [REFERENCE]), der giver brugeren mulighed for at se og gemme den nye stævneplan.
 \par
-Når \textbf{\textit{addTeams}} afsluttes, sættes variablen \textbf{\textit{sentinel}} til 1. Dette sikrer at holdnavne og niveauer kun bliver scannet ind fra filen én gang, da brugeren har mulighed for at foretage flere ændringer. De ændringer brugeren laver, ville blive overskrevet hvis holdnavne og niveauer blev scannet ind hver gang.
-\par
-Til sidst returnerer \textbf{\textit{addTeams}} det opdaterede \textbf{\textit{all\_teams}}.
-\par
-Ønsker brugeren at fjerne hold, kaldes funktionen \textbf{\textit{removeTeams}} i stedet. Denne funktion starter med at prompte brugeren for antallet af hold der skal fjernes. Denne værdi lægges over i variablen \textbf{\textit{number\_of\_removed\_teams}}. Derefter allokeres plads til et array af de hold der skal fjernes, ved brug af \textbf{\textit{allocateMemoryTeams}}, som kaldes med den foregående variabel som input. Funktionen returnerer et array af typen \textbf{\textit{team}}. 
-\par
-Ligesom ved \textbf{\textit{addTeams}}, bliver holdnavne og niveauer kun scannet ind den første gang funktionen bliver kaldt, medmindre \textbf{\textit{addTeams}} allerede har været kaldt. De eksisterende hold bliver derefter printet til terminalen, hvor efter brugeren bliver promptet for navnene på de hold der skal fjernes. Her er det ikke nødvendigt at vide hvilket niveau holdet er, så funktionen \textbf{\textit{getTeamNames}} bruges til dette. Denne funktion lægger holdnavnene der skal fjernes over i \textbf{\textit{removed\_teams}}-arrayet. Funktionen \textbf{\textit{deleteTeams}} fjerner derefter de hold brugeren har tastet ind, ved at gennemgå \textbf{\textit{all\_teams}}-arrayet indtil den finder det rigtige navn. Dette holds niveau sættes derefter til EMPTY, som er en enumeration for 4, og resten af programmet vil derefter ignorere dette hold. Dette gøres for alle de hold brugeren har tastet ind.
-\par
-Hvis brugeren ikke ønsker at lave ændringer, vil \textbf{\textit{all\_teams}}-array forblive NULL, som den blev initialiseret til. Hvis dette er tilfældet skal \textbf{\textit{updateTournament}} ikke foretage sig yderligere. Derfor tjekkes der i linje 20, om arrayet stadig er NULL. Hvis denne betingelse er sand, returner funktionen heltallet 1.
-\par
-Hvis variablen derimod er blevet ændret, vil betingelsen være falsk, og \textbf{\textit{updateTournament}} vil fortsætte, til at udregne antallet af kampe i turneringen med samme formel som i kildekode \ref{code:createNewTournament}, og gemme værdien i variablen \textbf{\textit{number\_of\_matches}}.
-\par
-Herefter starter processen med at opdaterer stævneplanen. Dette starter ved at allokerer plads til arrayet \textbf{\textit{tournament}}, vis elementer, der af er typen \textbf{\textit{match}}, er de kampe der skal spilles i stævnet.
-Denne pladsalokerring udføres af \textbf{\textit{allocateMemoryTournament}}-funktionen. Denne funktion kaldes med \textbf{\textit{number\_of\_matches}}, som er mængden af elementer arrayet skal indeholde. Returværdien er en pointer til det allokerede array, som gemmes i variablen \textbf{\textit{tournament}}.
-\par
-Efterfølgende findes antallet af baner, ved at kalde \textbf{\textit{getNumberOfFields}}-funktionen med stævneplanen. Denne funktion finder og returner antallet af baner der bruges i en stævneplan i en given fil. Returværdien gemmes i variablen \textbf{\textit{number\_of\_field}}.\\
-Kampene sammensættes på ny af createTournament-funktionen, der kaldes med variablerne der nu er blevet justeret til de ændringer brugeren ønskede.
-\par
-Før at stævneplanen kan sammensættes er det nødvendigt først at kende antallet af runder, og stævnets startidspunkt. Antallet af runder udregnes og gemmes i variablen \textbf{\textit{number\_of\_rounds}}. Det antages at starttidspunktet ikke har ændret sig, og derfor kan det findes i filen med den gamle stævneplan. Dette tidspunkt findes og returneres af \textbf{\textit{getStartingTime}}-funktionen, og gemmes i variablen \textbf{\textit{starting\_time}}.
-\par
-Det er nu muligt at opstille en ny stævneplan der tager højde for ændringerne. Dette gøres ved at kalde \textbf{\textit{printingMenu}}-funktionen, der giver brugeren mulighed for at se og gemme den nye stævneplan.
-\par
-Til sidst frigøres den allokerede plads, og filpointeren sættes til at pege på starten af filen. Funktionen afsluttes ved at returnerer 0. 
+Til sidst frigøres den allokerede plads, og filpointeren sættes til at pege på starten af filen. Funktionen afsluttes ved at returnerer 0, hvilket betyder at der blev foretaget ændringer. 
 \begin{listing}[H]
 \begin{minted}[frame=lines, framesep=3mm, baselinestretch=1, linenos, bgcolor=LightGray]{c}
 /* Opdaterer en eksisterende turneringsplan. 
@@ -490,56 +513,108 @@ int updateTournament(FILE *fp) {
 %Når funktionen køres bliver variablerne int \textbf{\textit{team\_index}}, int \textbf{\textit{number\_of\_removed\_teams}} og team \textbf{\textit{*removed\_teams}}, som er en pointer til et array, initialiseret.
 %I linje ni og ti prompter og scanner programmet for antallet af hold der skal fjernes. Det antal af hold der skal fjernes, bliver sat over i \textbf{\textit{number\_of\_removed\_teams}}. Denne variable gør det muligt at finde ud af hvor meget plads der skal allokeres til arrayet \textbf{\textit{removed\_teams}} i linje 13. 
 
+\subsubsection{Scan-funktioner}
+Funktionerne \textbf{\textit{scanTeamFile}} (Kildekode \ref{code:scanTeamFile}) og \textbf{\textit{scanFileForTeams}} (Kildekode \ref{code:scanFileForTeams}) scanner henholdsvist den oprindelige inputfil og en fil med en tidligere genereret stævneplan. \textbf{\textit{ScanTeamFile}} (Kildekode \ref{code:scanTeamFile}) tager \textbf{\textit{all\_teams}} som parameter, hvor alle holdene placeres. Dette array er tidligere i programmet blevet allokeret med calloc for at nulstille alle members af structene. Dette gøres for at sikre at tomme structs ikke bliver taget med når stævneplanen laves, i tilfælde af at der allokeres for meget plads i forhold til antallet af hold. [ER IKKE SIKKER PÅ AT DET ER RIGTIGT] Nulstillingen sikrer også at den string der indeholde holdnavnet bliver afsluttet med nultegner. \\
+Antallet af hold er tidligere fundet ved at tælle antallet af gange en linje i inputfilen succesfuldt kan scannes ind. Nu gennemgås filen igen efter at filpointeren er ført tilbage til starten af inputfilen med funktionen \textbf{\textit{rewind}}. I denne gennemgang læses holdnavn og niveau over i deres respektive members af \textbf{\textit{team}} structen for det hold i \textbf{\textit{all\_teams}} arrayet. Det sikres at level, der er læst ind som en \textbf{\textit{char}} er et stort bogstav, og derefter oversættes dette bogstav til et enumeration-typen tidligere defineret. \\
+Til sidst flyttes filpointeren tilbage til toppen af inputfilen.\\\\
+\textbf{\textit{ScanFileForTeams}} (Kildekode \ref{code:scanFileForTeams}) funktionen starter med at flytte den relevante filpointer op til starten af inputfilen og allokerer derefter plads til arrayet \textbf{\textit{all\_teams}}. \\
+Hver linje i filen læses nu over i et midlertidigt \textbf{\textit{char}} array, som er statisk allokeret så der er plads nok til hele linjen. En while-løkke fortsætter linje for linje så længe det midlertidige \textbf{\textit{char}} array det indlæses ikke er tomt. En if-sætning tester om hver linje er over \textbf{\textit{MIN\_LINE\_LEN}}, altså 16, tegn lang. Dette tal er den mindste længde en linje kan have hvis den indeholde informationerne for en kamp i stedet for en runde eller et tidspunkt. Her antages det at linjer med runder og tid ikke indeholder whitespace som gør linjen længere end 16 tegn lang. En stævneplan genereret af dette program vil overholde denne begrænsning og det antages ikke af brugeren selv skriver inputfilen eller redigerer i den. Hvis dette ikke overholdes kan der dog opstå problemer i kaldet af denne funktion. \\
+Funktionen \textbf{\textit{sscanf}} læser niveau og hvilke hold der spiller i kampen over i henholdvis charen \textbf{\textit{level}} og et midlertidigt \textbf{\textit{char}} array. Banenummeret skal ikke bruges, så %*d (l. XXX) scanner banenummeret uden at læse heltallet over i en variabel. Der er således tale om assignment suppression. \textbf{\textit{Sscanf}} returnerer antal gange der er blevet læst noget over i en variable og tæller derfor ikke %*d med. Denne værdi føres over i \textbf{\textit{scanres}} og det sikres at denne er lig med 2, hvilket betyder en succesfuld indlæsning. Ellers printes en fejlmeddelelse. \\
+charen \textbf{\textit{level}} oversættes til enumeration typen for level of overføres til level memberet af structen for den gældende kamp.\\
+Funktionen \textbf{\textit{splitTeams}} går strengen med de to hold der spillet mod hinanden igennem og leder efter et vs med mellemrum på begge sider. Dette bruges til at skille de to holdnavne ad og copiere dem over i en midlertidig \textbf{\textit{match}} struct, som returneres gennem parameterne for funktionen. Det antages at " vs " ikke bruges i navngivningen af hold, da.\\
+Når den midlertidige \textbf{\textit{match}} struct er dannet, tjekkes det om de to hold allerede er i \textbf{\textit{all\_teams}} arrayet, og ellers kopieres holdnavn og level for kampen over i den næste \textbf{\textit{team}} struct i arrayet. \\
+Til sidst sættes filpointeren igen tilbage til starten at input filen, så den er klar, hvis filen skal scannes igen. Funktionen returnerer det færdige \textbf{\textit{all\_teams}} array.\\
+
 \begin{listing}[H]
 \begin{minted}[frame=lines, framesep=3mm, baselinestretch=1, linenos, bgcolor=LightGray]{c}
-/* Fjerner hold fra all_teams arrayet. */
-team *removeTeams(FILE *fp, const int sentinel, team *all_teams, 
-                  int *number_of_teams) {
-                  
-  int team_index = 0;
-  int number_of_removed_teams = 0;
-  team *removed_teams = NULL;
+/* Fylder et arrayet all_teams med holdnavne og niveau. */
+void scanTeamFile(FILE *fp, const char *file_name, 
+                  const int number_of_teams, team *all_teams) {
+  char level = ' ';
+  int i;
 
-  /* Prompter og scanner for antal af hold der skal fjernes. */
-  printf("Antal hold der ønskes at fjernes\n>> ");
-  scanf(" %d", &number_of_removed_teams);
+  /* Gennemgår filen med holdnavne, og kopierer holdnavn og niveau 
+     over på de rigtige pladser i et array af structs. */
+  for (i = 0; i < number_of_teams; i++) {
+    /* Checker om filpointeren er kommet til slutningen af filen,
+       og stopper hvis det er sandt. */
+    if (feof(fp)) {
+      printf("EOF\nMulig fejl\n");
+      break;
+    }
 
-  /* Allokere plads til array med hold der skal fjernes. */
-  removed_teams = allocateMemoryTeams(number_of_removed_teams);
-  if (sentinel != 1) {
-    /* Scanner eksisterende kampprograms-fil og 
-    generere et array med de nuværende hold. */
-    all_teams = scanFileForTeams(fp, *number_of_teams);
+    fscanf(fp, " %[a-zA-Z0-9 ] %*c %c", all_teams[i].team, &level);
+
+    /* Sætter niveauet til stort. */
+    level = toupper(level);
+    /* Oversætter level fra char til enuem typen 'level'. */
+    all_teams[i].level = getLevel(level);
   }
 
-  /* Printer all nuværende hold ud. */
-  printTeams(all_teams, *number_of_teams);
+  rewind(fp);
+}
+\end{minted}
+\captionof{listing}{TEKST}
+\label{code:scanTeamFile}
+\end{listing}
 
-  /* Prompt og scan nye holdnavne. */
-  for (team_index = 0; team_index < number_of_removed_teams; 
-       team_index++) {
-    getTeamNames(team_index, removed_teams[team_index].team);
+\begin{listing}[H]
+\begin{minted}[frame=lines, framesep=3mm, baselinestretch=1, linenos, bgcolor=LightGray]{c}
+/* Scanner et kampprogram, returnerer et array af alle hold. */
+team *scanFileForTeams(FILE *fp, const int number_of_teams) {
+  int scanres = 0;
+  int i = 0;
+  char temp[MAX_LINE_LEN];
+  char temp_teams[MAX_LINE_LEN];
+  char level;
+  match temp_match;
+  team temp_team_a;
+  team temp_team_b;
+  team *all_teams = NULL;
+
+  rewind(fp);
+
+  all_teams = allocateMemoryTeams(number_of_teams);
+
+  while (fgets(temp, MAX_LINE_LEN, fp) != NULL) {
+
+    if (strlen(temp) > MIN_LINE_LEN){ /*Hvis har en bestemt størrelse, 
+                                        må den indeholde en kamp. */
+      scanres = sscanf(temp, " Bane %*d | %c | %[a-zA-Z0-9æøåÆØÅ ] ",
+                       &level, temp_teams);
+
+      if (scanres != 2) {
+        perror("Error scanning matches");
+      }
+
+      temp_match.level = getLevel(level);
+
+      splitTeams(temp_teams, &temp_match);
+
+      /* Indsæt hold, hvis de ikke er der allerede. */
+      copyNonExistingTeam(all_teams, temp_match.team_a,
+                          temp_match.level, &i);
+      copyNonExistingTeam(all_teams, temp_match.team_b,
+                          temp_match.level, &i);
+    }
   }
 
-  deleteTeams(removed_teams, number_of_removed_teams, 
-              *number_of_teams, all_teams);
-              
-  free(removed_teams);
+  rewind(fp);
   return all_teams;
 }
 \end{minted}
-\captionof{listing}{TEKTS}
-\label{code:removeTeams}
+\captionof{listing}{TEKST}
+\label{code:scanFileForTeams}
 \end{listing}
 
 \subsubsection{PrintProgram}
-Funktionen \textbf{\textit{printProgram}} tager en filpointer som parameter. når funktionen kaldes er denne filepointer enten til en åben fil som den færdige stævneplan printes til eller den er funktionen kaldes med \textbf{\textit{stdout}} som filpointeren for at printe til terminalen. Når funktionen endeligt printer bruges fprintf, som typisk printer til en fil, men \textbf{\textit{stdout}} fungerer som en filpointer, men peger på terminalen som fungerer som en altid åben fil. \\
+Funktionen \textbf{\textit{printProgram}} tager en filpointer som parameter. Når funktionen kaldes er denne filpointer enten til en åben fil som den færdige stævneplan printes til eller den er funktionen kaldes med \textbf{\textit{stdout}} som filpointeren for at printe til terminalen. Når funktionen endeligt printer bruges fprintf, som typisk printer til en fil, men \textbf{\textit{stdout}} fungerer som en filpointer, men peger på terminalen som fungerer som en altid åben fil. \\
 \textbf{\textit{PrintProgram}} går gennem hver kamp i \textbf{\textit{tournament}} arrayet, så længe både hold a og hold b i kampen begge starter med et bogstav, altså at de ikke er tomme. For hver kamp kamp udregnes den nuværende tid i minutter til timer og minutter i hver deres variabel.\\
  Hvis antallet af baner går op i indexet for den gældende kamp, er denne kampen starten af en ny runde, da antal baner svarer til hvor mange kampe der spilles hver runde. Hvis det er starten på en ny runde printes denne ud efterfulgt af tiden for hvornår runden starter. Den første runde vil starte på det tidspunkt brugeren har indtastet tidligere. Efterfølgende tælles tiden op med så mange minutter som en kamp og den efterfølgende pause tager, altså 8 minutter i alt. en variable der tælle runderne tælles også en op. \\
  Det næste der printes den næste kamp i \textbf{\textit{tournament}} arrayet. Hvis antal baner ikke går op i indexet for kampen printes kun den næste kamp uden rundenummer og tid. Efter den sidste kamp i en runde printes også et ekstra linjeskift for at øge læsbarheden af stævneplanen. \\
- Hver linje i den printede plan som repræsenterer en kamp, starter med hvilen bane kampen spilles på, efterfulgt af niveauet for holdene der spiller og så navnene på disse hold. For hver kamp der printes tælles indexet for kampene op med en. \\
+ Hver linje i den printede plan som repræsenterer en kamp, starter med hvilken bane kampen spilles på, efterfulgt af niveauet for holdene der spiller og så navnene på disse hold. For hver kamp der printes tælles indexet for kampene op med én. \\
  
- \begin{listing}
+\begin{listing}
 \begin{minted}[frame=lines, framesep=3mm, baselinestretch=1, linenos, bgcolor=LightGray]{c}
 /* Printer turneringsplan til fil
    Parameterne er en fil-pointer, enten filen der skal skrives til, 
@@ -609,10 +684,114 @@ int printProgram(FILE *fp, const match *tournament,
 
 
 
+\subsubsection{modifyTeams}\label{modifyTeamsAfsnit}
+I dette afsnit vil funktionen \textbf{\textit{modifyTeams}} blive genenmgået og diskuteret. Funktionen kan ses i kildekode \ref{code:modifyTeams}.
+% \par
+% Funktionen \textbf{\textit{modifyTeams}} bliver kaldt i funktionen \textbf{\textit{editMenu}}. Her får brugeren muligheden for at tilføje eller fjerne hold. Alt efter hvad brugeren vælger, vil \textbf{\textit{modifyTeams}} blive kaldt med forskellige parametre der ændrer på den måde den behandler arrayet \textbf{\textit{all\_teams}}.
+% \\\\
+% Programmet blev til at starte med, udviklet med den tanke, at der skulle være to forskellige funktioner der redigerede stævneplanen. Disse blev navngivet \textbf{\textit{addTeams}} og \textbf{\textit{removeTeams}} (Se bilag \ref{ch:appFlabel}). De blev kombineret til \textbf{\textit{modifyTeams}}. Funktionerne tog sig af hver deres del af redigeringen, og gjorde det på lidt forskellige måder. I \textbf{\textit{addTeams}} bliver \textbf{\textit{number\_of\_teams}} talt op \textit{før} der bliver allokeret plads til \textbf{\textit{all\_teams}} arrayet. Dette er fordi der skal være plads til de nye hold. I \textbf{\textit{removeTeams}}, er dette ikke nødvendigt, da de hold der bliver fjernet, får markeringen \textbf{\textit{EMPTY}}, der gør at resten af programmet ignorerer dette hold.
+% \par
+% Den måde hver funktion opfører sig på, alt efter om det er første gang de bliver kaldt eller ej, er også lidt forskellig. I begge funktioner bliver holdnavne og niveau scannet ind den første gang, men efter første gang, udvides \textbf{\textit{all\_teams}} i \textbf{\textit{addTeams}}, men dette sker ikke i \textbf{\textit{removeTeams}}. Det skyldes som sagt at holdene ikke bliver fjernet, men bare bliver markeret med \textbf{\textit{EMPTY}}.
+% \par
+% Der opstår også en lille forskel mellem funktionerne, når de nuværende hold skal printes med \textbf{\textit{printTeams}}. I \textbf{\textit{addTeams}}, skal antallet af nye hold trækkes fra \textbf{\textit{number\_of\_teams}}, da print funktionen ellers ville gå ud over den plads der er allokeret til \textbf{\textit{all\_teams}}. Igen er dette ikke nødvendigt i \textbf{\textit{removeTeams}}, da \textbf{\textit{number\_of\_teams}} ikke har ændret sig.
+% \par
+% I forhold til funktionen \textbf{\textit{getTeams}}, er der forskel på nogle af inputparametrene, da der er forskel på den måde informationer skal scannes ind fra terminalen. Funktionen \textbf{\textit{addTeams}}, bliver nødt til at kende både holdets niveau og navn, \textbf{\textit{removeTeams}} behøver kun holdets navn.
+% \par
+% Endeligt er der forskel på de hvordan hver funktion afsluttes. Funktionen \textbf{\textit{addTeams}}, afsluttes med at kalde funktionen \textbf{\textit{copyTeams}}, som kopierer alle de tilføjede hold over i \textbf{\textit{all\_teams}}. I \textbf{\textit{removeTeams}} bliver de hold der skal fjernes, markeret med \textbf{\textit{EMPTY}} ved brug af funktionen \textbf{\textit{deleteTeams}}, hvorefter disse hold bliver flyttet til de sidste pladser i \textbf{\textit{all\_teams}} med funktionen \textbf{\textit{sortArrayByLevel}}.
+\\\\
+Disse forskelle bliver taget højde for i funktionen \textbf{\textit{modifyTeams}} som kombinerer \textbf{\textit{addTeams}} og \textbf{\textit{removeTeams}}. Ved brug af konstanten \textbf{\textit{modifier}} og en funktion som inputparameter, ændres den måde funktionen behandler \textbf{\textit{all\_teams}}.
+\par
+Når funktionen bliver kaldt i \textbf{\textit{editMenu}}, kaldes den enten med \textbf{\textit{ADD}} eller \textbf{\textit{REMOVE}}, som bestemmer om der enten skal fjernes eller tilføjes hold. Disse to modifikatore er enumerationer, der står for henholdsvis 1 og 0. Tallene er arbitrære, der skal bare være forskel på dem. Yderligere kaldes \textbf{\textit{modifyTeams}} enten med funktionen \textbf{\textit{copyTeams}} eller \textbf{\textit{deleteTeams}} som inputparameter, der bruges når \textbf{\textit{all\_teams}} skal behandles.
+\par
+Det første der sker, efter \textbf{\textit{modifyTeams}} bliver kaldt, er at brugeren bliver promptet for antallet af hold, de vil tilføje eller fjerne. Dette bliver gjort med funktionen \textbf{\textit{promptForNumberOfTeams}}, som tager konstanten \textbf{\textit{modifier}} som inputparameter. Konstanten ændrer på om brugeren vil blive spurgt om hvor mange hold de vil tilføje, eller om de bliver spurgt om hvor mange de vil fjerne. 
+\par
+Efter der er blevet allokeret hukommelse til arrayet med plads til de hold der skal ændres på, bliver der tjekket for om \textbf{\textit{modifyTeams}} er i gang med at tilføje hold.  Variablen \textbf{\textit{number\_of\_teams}} bliver nødt til at blive talt op her, når der skal tilføjes hold, da der skal gøres plads til flere hold lidt senere. Dette er ikke nødvendigt når der skal fjernes hold, da disse bliver markeret med \textbf{\textit{EMPTY}} og "ignoreret" af resten af programmet.
+\par
+Hvis det er første gang \textbf{\textit{modifyTeams}} bliver kaldt, bliver holdnavne og niveau scannet ind fra tekstfilen med stævneplanen, ved hjælp af funktionen \textbf{\textit{scanFileForTeams}}. Denne funktion returnerer \textbf{\textit{all\_teams}}-arrayet, og det er blandt andet her det er vigtigt at \textbf{\textit{number\_of\_teams}} er blevet talt op, hvis der tilføjes hold, da \textbf{\textit{all\_teams}} skal have plads til de nye hold.
+\par
+Hvis det ikke er første gang, bliver det allerede eksisterende \textbf{\textit{all\_teams}} kopieret over i et større array ved brug af funktionen \textbf{\textit{updateTeams}}. Dette er kun nødvendigt når der tilføjes hold, så hvis \textbf{\textit{modifier}} er \textbf{\textit{REMOVE}}, springer programmet dette skridt over.
+\par
+Herefter bliver de nuværende hold printet til terminalen. Dette giver brugeren et overblik over, hvilke hold der allerede er i stævnet. Funktionen \textbf{\textit{printTeams}} printer dem, og en af de inputparametre den får, er resultatet fra en ternær operation. Hvis \textbf{\textit{modifyTeams}} er i gang med at tilføje hold, er \textbf{\textit{number\_of\_teams}} blevet talt op tidligere. Derfor er der brug for at trække antallet af nye hold fra, da der ellers ville blive tilgået lagerplads uden for \textbf{\textit{all\_teams}}. Hvis \textbf{\textit{modifyTeams}} derimod er i gang med at fjerne hold har \textbf{\textit{number\_of\_teams}} ikke ændret sig, og funktionen kan blive kaldt uden at trække noget fra.
+\par
+Efter brugeren har set hvilke hold der er i den nuværende stævneplan, bliver funktionen \textbf{\textit{getTeams}} kaldt. Formålet med denne funktion, er at få scannet de hold ind der skal tilføjes eller fjernes. Hvis \textbf{\textit{modifyTeams}} er i gang med at tilføje hold, vil der yderligere blive scannet ind, hvilket niveau hvert hold har. Dette er ikke nødvendigt når der skal fjernes hold, da funktionen \textbf{\textit{deleteTeams}} kun skal kende navnet på holdet. Navnene, og eventuelt niveauerne, på de hold der skal tilføjes eller fjernes, bliver gemt i arrayet \textbf{\textit{temp\_team\_array}}, som der blev allokeret plads til tidligere. 
+\par
+Når de hold der skal tilføjes eller fjernes er blevet fundet, kommer programmet til den funktion som blev sendt ind som inputparameter. Her bliver \textbf{\textit{copyTeams}} eller \textbf{\textit{deleteTeams}} som sagt kaldt. Funktionen \textbf{\textit{copyTeams}} kopierer holdene fra \textbf{\textit{temp\_team\_array}} over i de tomme pladser i \textbf{\textit{all\_teams}}. Funktionen \textbf{\textit{deleteTeams}}, tager holdene fra \textbf{\textit{temp\_team\_array}} og sammenligner dem med holdene i \textbf{\textit{all\_teams}}, indtil den finder et match. Dette hold bliver så markeret med \textbf{\textit{EMPTY}}.
+\par
+Til sidst bliver der tjekket om programmet er ved at fjerne hold. Hvis dette er tilfældet, flyttes de hold der er markeret med \textbf{\textit{EMPTY}} ned til enden af \textbf{\textit{all\_teams}}, og \textbf{\textit{number\_of\_teams}} bliver talt ned, så de hold ikke længere bliver talt med. På denne måde er de essentielt blevet fjernet fra programmet, da de ikke længere bliver tilgået. 
+\par
+Herefter returneres \textbf{\textit{all\_teams}} til funktionen \textbf{\textit{editMenu}}, hvor brugeren så kan vælge at køre \textbf{\textit{modifyTeams}} igen. 
+
+
+\begin{listing}[H]
+\begin{minted}[frame=lines, framesep=3mm, baselinestretch=1, linenos, bgcolor=LightGray]{c}
+
+/* Ændrer på all_teams, baseret på funktionen *f 
+   og konstanten modifier */
+team *modifyTeams(FILE *fp, const int sentinel, const int modifier, 
+            team *all_teams, int *number_of_teams, 
+            void (*f)(const team *, const int, const int, team *)) {
+                  
+  team *temp_team_array = NULL;
+  int number_of_mod_teams = 0;
+
+  /* Prompter brugeren for antallet af hold der skal fjernes 
+     eller tilføjes. modifier bestemmer om der bliver printet 
+     "tilføjes" eller "fjernes" til terminalen */
+  number_of_mod_teams = promptForNumberOfTeams(modifier);
+
+  /* Allokerer plads til et array med plads til de hold 
+     der skal fjernes eller tilføjes */
+  temp_team_array = allocateMemoryTeams(number_of_mod_teams);
+
+  /* Checker om number_of_teams skal tælles op */
+  if (modifier == ADD) {
+    *number_of_teams += number_of_mod_teams;
+  }
+  /* Tjekker om det er første gang funktionen bliver kaldt */
+  if (sentinel == FIRST) {
+    all_teams = scanFileForTeams(fp, *number_of_teams);
+  }
+  /* Hvis funktionen allerede har været kaldt, 
+     og der skal tilføjes hold, udvides all_teams */
+  else if (sentinel != FIRST && modifier == ADD) {
+    all_teams = updateTeams(all_teams, *number_of_teams);
+  }
+
+  /* Printer de nuværende hold til terminalen */
+  printTeams(all_teams, (modifier == ADD) ? 
+                         *number_of_teams - number_of_mod_teams : 
+                         *number_of_teams);
+
+  /* Prompter og scanner nye hold ind. */
+  getTeams(number_of_mod_teams, *number_of_teams, 
+           all_teams, modifier, temp_team_array);
+
+  /* Fjerner eller tilføjer hold, 
+     alt efter hvor modifyTeams blev kaldt */
+  (*f)(temp_team_array, number_of_mod_teams, 
+       *number_of_teams, all_teams);
+
+  if (modifier == REMOVE) {
+    /* Flytter de fjernede hold til sidst i all_teams */
+    sortArrayByLevel(all_teams, *number_of_teams);
+    *number_of_teams -= number_of_mod_teams;
+  }
+  return all_teams;
+}
+
+
+\end{minted}
+\captionof{listing}{TEKST}
+\label{code:modifyTeams}
+\end{listing}
+
+\subsection*{Opsamling} 
+I dette afsnit er de vigtigste funktioner for programmet og løsningen af problemet blevet beskrevet og argumenteret for. Det næste skridt er derfor at vurdere om programmet lever op til de krav der er stillet for løsningen. 
+
 
 
 % Skriv bl.a. om videreudvikling
 
-\subsection*{Noter}
-Vil vi generere noget tilfældigt, indtil vi finder det bedste, eller vil vi generere noget okay, og gøre det bedre?\\
-Genererer vi et helt kampprogram, og spørger om det er godt, eller genererer vi en enkelt runde, og spørger om den er god?
+%\subsection*{Noter}
+%Vil vi generere noget tilfældigt, indtil vi finder det bedste, eller vil vi generere noget okay, og gøre det bedre?\\
+%Genererer vi et helt kampprogram, og spørger om det er godt, eller genererer vi en enkelt runde, og spørger om den er god?

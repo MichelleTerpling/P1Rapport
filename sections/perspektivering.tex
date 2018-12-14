@@ -1,22 +1,47 @@
 \chapter{Perspektivering}\label{ch:chlabel}
-INTRODUKTION
-\\\\
-\section*{Fremtidig arbejde}
-Intro. Noget med hvis mere tid og ressourcer, så vil der kunne blive videreudviklet på programmet. Dette kunne blandt andet være at gøre programmet mere bredt så den også kan lave planer til noget større end bare  stævneplanlægger til Kidzliga floorball.
-\\
-Programmet følger specifikt de regler og krav der er stillet af Floorball Danmark i forbindelse med Kidzliga stævner. Man kunne dog gøre programmet bredere, så den ikke kun er afgrænset til Kidzliga reglerne, men også til eksempelvis pokalturneringer. 
-\\
-Hvis der ikke kunne var en Kidzliga stævneplaner, men at den også kunne laver turneringsplaner til pokalturneringer.
-\\
-Hvis det ikke kun var til Floorbal regler men også andre sport, så man gøre det mere bredt ved at give brugeren mulighed til at sætte krav til bestemte ting, fx varigheden af hver kamp, pauserne mellem hver kamp, halvleg, eventuelle andre pauser, osv.
-\\
+%Introduktion: en vurdering af om vores program er en god løsning eller ej.
+I dette kapitel vil der blive vurderet om programmet er en god løsningen i forhold til det større perspektiv. Programmet vil blive sammenlignet med eksisterende programmer der sammensætter stævner. Der vil blive diskuteret alternative metoder at lave løsningen på. Til sidst vil der blive diskuteret, hvilke slags udvidelser der potentielt kunne laves på programmet, hvis der var mere tid. 
 
 \section*{Eksisterende programmer}
-Der er tidligere i rapporten beskrevet nogle eksisterende programmer, som også laver stævneplanner.
+Der findes allerede programmer, som sammensætter en stævneplan. Eksempler på disse programmer er Tournament Scheduler og Teamopolis, som også er blevet analyseret og vurderet i afsnit \ref{eksisterendeProgrammer} (s. \pageref{eksisterendeProgrammer}) i forbindelse med deres effektivitet og fleksibilitet. For at vurdere hvor godt projektets program er, vil der i dette afsnit blive sammenlignet mellem disse eksisterende programmer og projektets program.
+\\\\
+Projektets program er lavet så den følger Kidzliga floorball regler. De eksisterende programmer fra afsnit \ref{eksisterendeProgrammer} er dog ikke begrænset til denne form for stævne, og er derfor allerede anderledes på det punkt. Både Tournament Scheduler og Teamopolis er stævneplanlæggere, men de er begrænset i den form af at de ikke rigtig er inddelt i runder baseret på antal af baner der er til rådighed. I stedet antages det, at alle kampe kan spilles i en runde. 
 \\
-Noget om runder.
+I modsætning til dette, tager projektets program højde for denne begrænsning, og laver runder afhængigt af antallet af baner, som brugeren har til rådighed. Derudover giver dette også mulighed for at et hold kan holde pauser mellem hver kamp, hvor de andre to programmer ikke tager højde for dette. Denne egenskab fungerer dog ikke hver gang, da der er gange, hvor der er enkelte hold, som er nødt til at spille op til tre gange i træk. Det er dog bedre end at holdet skal spille i hver runde. 
 \\
-Noget om tilføjelser og fjernelser af hold.
+Med de eksisterende planlægnings programmer er brugere nødt til at lave en hel ny stævneplan, hvis der ønskes at tilføje eller fjerne et hold. Med projektets program kan den tidligere stævneplan indlæses, hvorefter man indtaster de ønskede ændringer. Denne måde gør det nemmere og hurtigere for brugeren at ændre på planen.
 \\
-Noget om Ændringer når kampen allerede er startet.
+Der er heller ikke det problem for projektets program med at hver gang en stævneplan lægges vil den ligne den forrige plan, da holdene sammensættes tilfældigt i kampe. Med de eksisterende programmer tages hver hold i rækkefølge efter listen af holdnavne, og derfor er stævneplanen afhængig af rækkefølgen af navnene. Hvis der ønskes en stævneplan, som er forskellig for den tidligere plan, er man nødt til manuelt at ændre rækkefølgen af holdnavene som de opstår i listen.
 \\
+Et andet problem med disse eksisterende er, at der ingen begrænsning er for hvor mange kampe et hold skal spille. I stedet er stævneplanen sammensat så alle hold spiller mod alle. Dette er dog ikke optimalt, hvis der eksempelvis er for mange hold. Derudover tages der ikke højde for hvilket niveau hver hold har. I modsætning til dette tager projektets program dog højde for disse ting. De krav der er sat for programmet sørger for at et hold ikke spiller for mange gange og at de ikke spiller mod et hold der her for højt eller lavt niveau.
+\\\\
+Disse eksisterende planlægnings programmer virker derfor ikke til at lave kidzliga stævner i floorball, da de ikke følger reglerne som stævnet følger. De nuværende planlægnings programmer har heller ikke den sammen fleksibilitet som projektets program har, og som projektet handlede om at forbedre. Det kan derfor konkluderes at projektets program er en bedre stævneplanlægger for kidzliga stævner i floorball, end de eksisterende planlægnings programmer er.  
+
+\section*{Alternative løsninger}
+Udover den måde programmet er blevet udformet på i projektet, er der også andre måde at gøre dette på, i forhold til den måde det nuværende program er designet på.
+\\\\
+Som der blev nævnt i problemløsningskapitlet bliver stævneplanen sat sammen tilfældigt hvorefter den evalueres i forbindelse om den har brudt nogle af de regler og krav der blevet sat. Dette er dog en metode ud af mange andre mulige måder programmet kunne se ud på.
+\\\\
+I stedet for den tilfældige metode, kunne man lave en algoritme, som altid vil sammensætte en stævneplan, der opfylder alle de stillede krav. Denne metode bliver brugt i de eksisterende programmer fra afsnit \ref{eksisterendeProgrammer} (s. \pageref{eksisterendeProgrammer}) til at fremsætte en stævneplan. Denne metode bruger ikke lang tid på at fremproducere en stævneplan, hvilket er et plus. Med denne metode vil der altid sammensættes en god stævneplan, men der vil være en risiko for at den bedste ikke vil blive fundet.
+\\
+En anden metode ville være at få programmet til at sammensætte planen på alle mulige kombinationer. Disse planer ville også skulle evalueres i forhold til de krav der er stillet til programmet. Hermed er der ingen risiko for at overse den bedste plan, da den altid vil blive produceret. Denne metode er dog ikke den mest optimale, da det er mange forskellige stævneplaner, som skal sættes sammen.
+\\
+Dette tager lang tid for programmet at gøre, hvor den derudover også løbende skal evaluere hver version af stævneplanen. For at skære ned i antallet af stævneplaner der skal sammensættes, er der i stedet blevet valgt en metode, hvor hold sammensættes tilfældigt i kampe og derefter sættes de ind i runder. Med denne metode er der dog stadig en risiko for at den bedste stævneplan ikke bliver fundet. På den anden side er denne metode langt hurtigere end at sammensætte alle mulige stævneplaner.
+\\\\
+Der er andre metoder og design programmet kunne skabes omkring, og de har alle forskellige fordele og ulemper. Dette projekts program er lavet med viden om de forskellige fordele og ulemper. Den valgte metode og ide er valgt ud fra denne viden. 
+
+\section*{Udvidelse af programmet}
+Hvis der havde været mere tid og ressourcer til rådighed, ville det være muligt at videreudvikle programmet. Dette kunne blandt andet være at gøre programmet mere bredt så den også kan lave planer til noget større end bare stævneplaner til Kidzliga floorball.
+\\\\
+Da programmet specifikt følger de regler og krav der er stillet af Floorball Danmark i forbindelse med Kidzliga stævner er den meget begrænset til dette område. Man kunne dog gøre programmet bredere, så den ikke kun er afgrænset til Kidzliga reglerne, men så der også mulighed for at få planer til eksempelvis pokalturneringer. Der vil hermed være en valgmulighed, hvor man kan vælge mellem hvilken form for turnering, der skal dannes en plan for. Tilhørende input tastes derefter ind af brugeren og en passende plan vil blive dannet.
+\\
+Da der er andre regler og en anden opsætning i forhold til pokalturneringer, vil koden også se anderledes ud. Pokalturneringer er sat op så man kun skal sammensætte hold i kampe for deres første kamp. De næste kampe afhænger af hvilket hold, der har vundet i den forrige kamp. Der vil derfor være behov for at tilføje en hel ny del til programmet, som sørger for at fremstille denne form for turneringsplan. 
+\\\\
+Programmet kan gøres endnu bredere og udvides så den også kan lave planer til andre sportsgrene end floorball. Hvis man gøre flere af variablerne til variabler der kan ændres på, vil disse blive bestemt af brugeren, hvor der tastes ind gennem standard input, hvad hver af de bestemte variabler skal være lig med. Disse variabler kunne eksempelvis være i forbindelse med tiden, hvor man kunne gøre varigheden af hver kampe, pauserne mellem hver kamp og eventuelle andre pauser til variabler brugeren kan bestemme.
+\\
+Alternativt, kunne man også lave skabeloner, som passer til de forskellige sportsgrene, hvor man har mulighed for at vælge hvilken sport man vil lave en plan til. Med disse skabeloner vil brugeren ikke være nødt til at taste ting ind for ny, men der er nogle allerede indtastede informationer, som der kan ændres på hvis nødvendigt. 
+\\\\
+Disse udvidelser vil kunne gøre programmet mere anvendelig til en bredere målgruppe og derfor lave programmet mere fleksibelt og brugbart for forskellige idrætsforeninger, mens programmet beholder dens fleksible tilgang.
+
+\section*{Opsamling}
+I dette kapitel er der fundet ud af hvordan programmet kan sammenlignes i et større perspektiv, ved at sammenligne det med eksisterende programmer, alternative løsninger og mulige udvidelser af programmet. På denne måde er programmet sat op i mod noget større end bare problemformuleringen. I forhold til den mængde ressourcer vi har haft og tid, er programmet et godt udgangspunkt, men det kan altid forbedres med mere tid og flere ressourcer. 

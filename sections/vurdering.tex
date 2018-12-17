@@ -1,38 +1,83 @@
-\chapter{Vurdering}\label{ch:chlabel}
-% Skriv om hvordan programmet ikke helt laver op til kravene og hvordan det lever op til kravene. Hvad ville vi gerne have lavet også?
-Som en del af problemløsningen i dette projekt, blev der stillet nogle krav til programmet der skulle udgøre løsningen. Dette program er nu blevet gennemgået, og i dette afsnit vil der blive set nærmere på, hvilke af de krav der blev opstillet, og hvilke af disse programmet lever op til.
+\chapter{Vurdering}\label{ch:vurdering}
+% Skriv om hvordan programmet ikke helt lever op til kravene og hvordan det lever op til kravene. Hvad ville vi gerne have lavet også?
+Som en del af problemløsningen i dette projekt, blev der stillet nogle krav til programmet, der skulle udgøre løsningen. Dette program er nu blevet gennemgået, og i dette afsnit vil der blive set nærmere på, hvilke af de krav, der blev opstillet, programmet lever op til. Kravene er skrevet med \textit{kursiv}.
 %programmet lever op til.
 \begin{itemize}
-    \item \textit{En kamp varer seks minutter,\ og der skal være en til to minutters pause mellem hver kamp}. Dette krav bliver opfyldt, ved printningen af programmet. Her starter tiden med det tidspunkt brugeren har tastet ind, og bliver talt op med 8 minutter for hver kamp. På denne måde starter hver runde på det rigtige tidspunkt, brugeren må dog selv tage tid til der er gået 6 minutter, og så tage 2 minutters pause.
-    \item \textit{Alle hold der deltager skal have cirka seks kampe.} I programmet er der defineret en symbolsk konstant \textbf{\textit{GAMES\_PR\_TEAM}}, der er sat til 6. Når der skal findes hold til en kamp igennem funktionerne \textbf{\textit{findFirstTeam}} og \textbf{\textit{findSecondTeam}}, er en af betingelserne for at et hold tages med, at de har spillet under 6 kampe. Da der tælles fra 0 til og med 5, ender alle hold med at få maks 6 kampe.
+    \item \textit{En kamp varer seks minutter, og der skal være en til to minutters pause mellem hver kamp}. Dette krav bliver opfyldt, når programmet printes. Her starter tiden med det tidspunkt, brugeren har tastet ind, og bliver talt op med 8 minutter for hver kamp. På denne måde starter hver runde på det rigtige tidspunkt, brugeren må dog selv tage tid til der er gået 6 minutter og så tage 2 minutters pause.
+    \item \textit{Alle hold, der deltager, skal have cirka seks kampe.} I programmet er der defineret en symbolsk konstant \textbf{\textit{GAMES\_PR\_TEAM}}, der er sat til 6. Når der skal findes hold til en kamp igennem funktionerne \textbf{\textit{findFirstTeam}} og \textbf{\textit{findSecondTeam}}, er en af betingelserne, for at et hold tages med, at de har spillet under 6 kampe. Da der tælles fra 0 til og med 5, ender alle hold med at få maks 6 kampe.
     \item \textit{Alle kampe i en runde skal startes og afsluttes på samme tid}. Dette krav bliver opfyldt på samme måde som det første krav, da print funktionen kun printer tidspunktet én gang for hver runde, og derfor starter hver runde på samme tid.
     \item \textit{Alle hold skal have mindst én hvilekamp mellem hver kamp}. Kravet her bliver kun delvist opfyldt. Programmet garanterer ikke at et hold får en hvilekamp mellem hver kamp, men det opfylder den anden del af kravet. Ifølge Kidzliga reglerne, tilstræbes det at hvis holdet skal spille igen med det samme, skal holdet spille på den samme bane som i runden før. Dette overholder programmet, så derfor er dette krav delvist opfyldt.
-    \item \textit{Der er defineret fire forskellige niveauer i Kidzliga: N, A, B og C}. Som beskrevet i implementering \ref{implementering}, er der lavet en enumeration for disse niveauer. Yderligere er der funktioner der konverterer disse enumerationer til og fra typen \textbf{\textit{char}}, som så kan printes.
-    \item \textit{Det udviklede kampprogram skal være opstillet på en præsentabel måde}. Dette krav er subjektivt, men denne projektgruppe mener dette krav er blevet opfyldt. Stævneplanen er sat op så for hver runde, kommer rundenummeret først, med tidspunktet bagefter. Planen er printet ud i kronologisk rækkefølge i en liste. Dette gør planen mere overskuelig, og det er nemt at finde frem til en given runde. Man kan hurtigt finde frem til der hvor man skal spille, ud fra det niveau ens hold er. 
+    \item \textit{Der er defineret fire forskellige niveauer i Kidzliga: N, A, B og C}. Som beskrevet i implementering \ref{implementering}, er der lavet en enumeration for disse niveauer. Yderligere er der funktioner, der konverterer disse enumerationer til og fra typen \textbf{\textit{char}}, som så kan printes.
+    \item \textit{Det udviklede kampprogram skal være opstillet på en præsentabel måde}. Dette krav er subjektivt, men denne projektgruppe mener, at dette krav er blevet opfyldt. Stævneplanen er sat op så der for hver runde, kommer rundenummeret først, med tidspunktet bagefter. Planen er printet ud i kronologisk rækkefølge i en liste. Dette gør planen mere overskuelig, og det er nemt at finde frem til en given runde. Man kan hurtigt finde frem til der, hvor man skal spille, ud fra det niveau ens hold er. 
     \par
-    Desuden gør layoutet det også nemmere at scanne informationer ind igen. Dette er ikke en del af kravet, men det er noget der skal tages hensyn til når det kommer til designet af planen.
-    \item \textit{Et hold må ikke spille mere end 2 kampe i træk.} Dette er en udvidelse af reglen om at der skal være en hvilkekamp mellem hver kamp og gælder når dette ikke kan lade sig gøre. 
-    \item \textit{Hvert hold skal spille mod et andet hold igen, så få gange som muligt, og to hold må ikke spille mod hinanden to kampe i træk.} Dette er besluttet for at sikre at hvert hold kommer til at spille med så mange forskellige hold som muligt.
+    Desuden gør layoutet det også nemmere at scanne informationer ind igen. Dette er ikke en del af kravet, men det er noget, der skal tages hensyn til, når det kommer til designet af planen.
 \end{itemize}
 
 
-\begin{itemize}
-    \item \textit{Et hold må ikke spille mere end 2 kampe i træk.} Dette er en udvidelse af reglen om at der skal være en hvilkekamp mellem hver kamp og gælder når dette ikke kan lade sig gøre. 
-    \item \textit{Hvert hold skal spille mod et andet hold igen, så få gange som muligt, og to hold må ikke spille mod hinanden to kampe i træk.} Dette er besluttet for at sikre at hvert hold kommer til at spille med så mange forskellige hold som muligt.
-\end{itemize}
+% \begin{itemize}
+    % \item \textit{Et hold må ikke spille mere end 2 kampe i træk.} Dette er en udvidelse af reglen om at der skal være en hvilkekamp mellem hver kamp og gælder når dette ikke kan lade sig gøre. 
+    % \item \textit{Hvert hold skal spille mod et andet hold igen, så få gange som muligt, og to hold må ikke spille mod hinanden to kampe i træk.} Dette er besluttet for at sikre at hvert hold kommer til at spille med så mange forskellige hold som muligt.
+% \end{itemize}
+
+\subsection*{Test}
+Det antages, at programmet er i stand til at lave en stævneplan hurtigere end et menneske. På trods af at der ikke er foretaget nogen test i dette projekt, der afgør, hvor hurtigt et menneske kan gøre det. Men der er blevet foretaget tests af, hvor lang tid visse funktioner i programmet tager. Testen, der kan findes i kildekode \ref{code:timeTest}, er foretaget på funktionen \textbf{\textit{createNewTournament}}. Da visse dele af denne funktion er afhængig af brugeren, og dermed dennes tidsforbrug, er de ikke blevet testet. Den del af processen, der er testet, er fra linje 20 i kildekode \ref{code:createNewTournament} på side \pageref{code:createNewTournament}, og frem til og med kaldet af \textbf{\textit{printingMenu}} i linje 60. Det bemærkes, at hver test blev foretaget fem gange, og det længste tidsforbrug er præsenteret her. Denne del af funktionen tager 0,306 sekunder. Det er også testet, hvor langt tid funktionen \textbf{\textit{printProgram}} tager om at skrive stævneplanen ud til terminalen. Denne proces tog 0,195 sekunder.
+\\
+I en virkelig situation skal der selvfølgelig tages højde for, at brugeren skal bruge tid til at indtaste indformation. Men det antages, at selv med dette yderligere tidforbrug lagt til, vil programmet være hurtigere til at udarbejde en stævneplan.
+
+\begin{listing}[H]
+\begin{minted}[frame=lines, framesep=3mm, baselinestretch=1, linenos, bgcolor=LightGray]{c}
+
+clock_t begin = clock();
+
+/* Proces der testes */
+
+clock_t end = clock();
+double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+
+\end{minted}
+\captionof{listing}{Koden bruges til at måle tidsforbruget af en proces. Dette gøres ved at måle antallet af clock-ticks, der bruges af en proces, og ved brug af \textbf{\textit{CLOCKS\_PER\_SEC}} omregnes dette til sekunder. Dette kodeeksempel bruger standardbiblioteket time.h}
+\label{code:timeTest}
+\end{listing}
 
 \section{Videreudvikling}
-
-Ting vi gerne vil have tilføjet:\\
-- Generering af stævneplan direkte fra print menuen. Det vil øge brugervenlighed og fleksibilitet.\\
-- Backtracking i createTournament, så funktionen ikke starter helt forfra når en regel bliver brudt, men i stedet går et bestemt antal runder tilbage, og arbejder videre derfra.\\
-- Lave ændringer i en stævneplan hvor kampe allerede er blevet spillet.\\ 
-- En funktion der advarer brugeren hvis stævneplanen kommer til at tage for lang tid at spille. Hvis stævnet starter om morgenen klokken 9:00 og slutter klokken 23, kunne der være sket en fejl fra brugerens side.\\
-- Redigeringen af en eksisterende stævneplan, burde lave så få ændringer som muligt, for at minimere forvirring. Dette er især vigtigt, hvis man foretager ændringer mens stævnet er i gang.\\
-- Pointsystem til createTournament, så de krav dette projekt ikke har fået opfyldt, bliver realiseret. \\
-- Mulighed for at ændre bane antal.\\
-- Mulighed for at indsætte pauser.\\
-- Tidstager, så brugeren ikke selv skal tage tid til hver runde.\\
+Under udviklingen af programmet blev der lavet en liste over features, programmet kunne have for at øge fleksibiliteten, effektiviteten og brugervenligheden af programmet. Flere af disse features blev integreret i programmet, men mange blev udeladt grundet prioritering. Der var andre features, der blev vurderet til at være vigtigere at fokusere på. I dette afsnit vil de features, der blev udeladt, blive gennemgået og diskuteret. 
+\\\\
+En af de store ting der kunne tilføjes til programmet, er backtracking, når der genereres stævneplaner. Som det er i det nuværende program, sammensættes en runde på ny, hver gang en af reglerne bliver brudt, altså når \textbf{\textit{no\_go\_count}} > 0. Når den har sammensat den samme runde \textbf{\textit{CHECK\_NUM}} gange, starter funktionen \textbf{\textit{createTournament}} helt forfra. Det betyder, at selvom algoritmen har nået den sidste runde og finder en sammensætning, der bryder en regel, fjerner den alle de andre runder, som fungerede fint, og starter forfra. \textbf{\textit{CHECK\_NUM}} er sat til et relativt stort tal, da programmet skal have en chance til at finde noget, der ikke bryder med reglerne.
+\\
+Dette kunne optimeres, ved at algoritmen i stedet finder det sted i stævneplanen, hvor sammensætningen forudsætter, at det går galt senere hen. Det kunne gøres, ved at algoritmen gik et antal runder tilbage i stævneplanen og sammensatte nye runder derfra. Da algoritmen er pseudo tilfældig, vil der blive genereret en ny stævneplan, som muligvis ikke bryder reglerne. Hvis det stadig ikke var nok, kan algoritmen gå endnu flere runder tilbage og starte derfra i stedet.
+\par
+På denne måde ville alle de runder, der fungerer ikke blive fjernet hver gang en regel brydes, og der vil derfor ikke være så meget spildt arbejde. Dette er dog ikke blevet implementeret, da det blev prioriteret lavere end at få et program, der kunne lave et funktionelt kampprogram. Hvis der også skulle have været fokus på at optimere programmet fuldstændigt, ville det have taget tid fra andre dele af projektet.
+\\\\
+Da fleksibilitet har været et af projektets fokusområder, var en af ideerne til at øge denne, at tilføje muligheden for at lave ændringer midt i en stævneplan uden at ændre på de kampe, der blev spillet før. Der kunne opstå situationer, hvor et hold må tage hjem før tid eller er forsinkede. I disse situationer ville det være optimalt at kunne ændre på så lidt som muligt, så de hold, der allerede har spillet, ikke får seks nye kampe.
+\par 
+Dette kunne implementeres ved at give hvert hold et start og et sluttidspunkt, for hvornår de kan deltage i stævnet. Funktionerne, der tager sig af at sammensætte stævneplanen, skulle så også tage højde for, at hvert hold er til stede, når hver runde bliver sammensat. Yderligere, skal programmet være i stand til at reproducere den del af stævneplanen, der allerede er blevet spillet. Dette kunne enten gøres ved at gemme det seed, der blev brugt til at generere stævneplanen, eller programmet kan scanne filen med den eksisterende stævneplan, indtil det kommer til den rigtige runde.
+\par
+Der kan dog opstå problemer, hvis et hold først kan komme sent på dagen, da holdet kunne ende med at skulle spille alle sine runder lige efter hinanden. Dette ville bryde med nogle af de krav, der er blev opstillet for programmet. Det er en af grunden til at dette ikke blev implementeret. Den anden grund er at dette ikke blev prioriteret lige så højt, som muligheden for at kunne tilføje og slette hold i stævneplanen. Der findes eksempler fra interviewet med Aalborg Flyers (Bilag \ref{ch:appClabel}), på at det kan være nødvendigt at tilføje og fjerne hold.
+\\\\
+Endnu en måde, programmets brugervenlighed kunne øges, var, hvis man kunne generere et nyt kampprogram direkte fra print menuen. Som programmet er lige nu, skal man starte forfra med at taste de nødvendige informationer ind, før man kan få genereret et nyt kampprogram. Dette er ikke optimalt, da brugeren kan have brug for at generere et nyt program, hvis de ikke er tilfredse. 
+\par
+Denne funktionalitet blev udeladt, da det blev set som et niche problem. De fleste brugere ville generere et program, og så rette det til med \textbf{\textit{editMenu}}. Igennem denne menu kan der også genereres nye stævneplaner baseret på holdene i den eksisterende stævneplan.
+\\\\
+Brugervenligheden og fleksibiliteten kunne også øges ved at give brugeren mulighed, for at indsætte pauser i stævneplanen. I sin nuværende version, printer programmet hele stævneplanen ud, og der indsættes ingen pauser, ud over de to minutter, der er mellem hver runde. Der kunne sagtens være situationer, hvor brugeren ønsker at indsætte længere pauser. Programmet skulle så også tage højde for, at der nogle steder kan stå \textit{Pause}, som det så skal springe hen over. Dette problem kan godt løses, men det er igen ikke prioriteret lige så højt som andre dele af programmet, da holdene har pauser under deres hvilekampe, og derfor ikke typisk har brug for længere pauser. 
+\\\\
+En anden måde at hjælpe brugeren ville være at tilføje en funktion, der tjekker for hvor lang tid den stævneplan, der er ved at blive lavet, vil komme til at tage. Hvis stævnet starter om morgenen klokken 9:00 og slutter klokken 23, kunne der være sket en fejl fra brugerens side. Brugeren kunne have kommet til at taste det forkerte antal baner ind eller det forkerte starttidspunkt. Som programmet er lige nu, skal brugeren selv være bevidst om at finde disse fejl. Dog er programmet bygget op på den måde, at man kan få lov til at gennemse stævneplan før man gemmer den. Derfor vurderes det til at være en mindre væsentlig tilføjelse.  
+\\\\
+Den stævneplan, der bliver genereret med dette program, er meget stringent i forhold til tiden. Der er sat præcis 8 minutter af til hver runde, og bliver denne overskredet, falder resten af stævneplanen fra hinanden. Derfor kunne det være en god ide at tilføje en indbygget tidstager, så brugeren ikke selv skal koordinere, hvor lang tid der går mellem hver runde. 
+\par
+Dette kunne gøres ved at lave en funktion, der scanner stævneplanen igennem, og finder de tidspunkter, hvor hver runde starter. Derefter kunne en anden funktion vise, hvor lang tid der er tilbage af den nuværende runde, og så lave en lyd når kampen er ovre. Herefter kunne den lave en anden lyd, når pausen er forbi, og den næste runde skal starte. På denne måde forbliver hele stævnet synkroniseret, og der er ikke nogen, som går i gang for sent eller for tidligt.
+\par
+Denne funktionalitet er dog ikke blevet implementeret, da det blev set som en ekstra ting, programmet ikke har brug for at gøre for at kunne fungere optimalt.
 
 \subsection*{Opsamling} 
-Programmet der er blevet lavet, lever ikke op til alle kravene, men størstedelen af kravene er der taget højde for. Ideen bag programmet lever dog stadig op til at kunne løse problemet, i forhold til at det kan lave og redigere en stævneplan. Der er også i afsnittet beskrevet om hvordan man kan forbedre programmet og gøre det mere fleksibelt en det endte med at blive.
+Programmet, der er blevet lavet, lever ikke op til alle kravene, men størstedelen af kravene er der taget højde for. Ideen bag programmet lever dog stadig op til at kunne løse problemet, i forhold til at det kan lave og redigere en stævneplan. Der er også i afsnittet beskrevet, hvordan man kan forbedre programmet, og gøre det mere fleksibelt, end det endte med at blive.
+
+
+% Ting vi gerne vil have tilføjet:\\
+% - Generering af stævneplan direkte fra print menuen. Det vil øge brugervenlighed og fleksibilitet.\\
+% - Backtracking i createTournament, så funktionen ikke starter helt forfra når en regel bliver brudt, men i stedet går et bestemt antal runder tilbage, og arbejder videre derfra.\\
+% - Lave ændringer i en stævneplan hvor kampe allerede er blevet spillet.\\ 
+% - En funktion der advarer brugeren hvis stævneplanen kommer til at tage for lang tid at spille. Hvis stævnet starter om morgenen klokken 9:00 og slutter klokken 23, kunne der være sket en fejl fra brugerens side.\\
+% - Redigeringen af en eksisterende stævneplan, burde lave så få ændringer som muligt, for at minimere forvirring. Dette er især vigtigt, hvis man foretager ændringer mens stævnet er i gang.\\
+% - Pointsystem til createTournament, så de krav dette projekt ikke har fået opfyldt, bliver realiseret. \\
+% - Mulighed for at indsætte pauser.\\
+% - Tidstager, så brugeren ikke selv skal tage tid til hver runde.\\

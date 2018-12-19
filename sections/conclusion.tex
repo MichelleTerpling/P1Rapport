@@ -1,41 +1,37 @@
-\chapter{Konklusion}\label{ch:conclusion}
+\chapter{Konklusion}\label{ch:konklusion}
 % Programmet kører *knipslyd* sådan der.
 
-Dette projekt startede med en initierende problemstilling om ressourcefordeling i idrætsforeninger. For at finde frem til et afgrænset problem inden for dette, blev der udført interviews med personer fra forskellige idrætsforeninger, der havde indsigt i de problemer, en forening kunne have. Dette endte med det afgrænsede problem, at det er en udfordring at lave og ændre kampplaner til kidzliga stævner i floorball. 
+Dette projekt startede med en initierende problemstilling om ressourcefordeling i idrætsforeninger. For at finde frem til et afgrænset problem inden for dette, blev der udført interviews med repræsentanter fra forskellige idrætsforeninger, der havde indsigt i de problemer, deres forening kunne have. Dette endte med det afgrænsede problem:
+\par
+\textbf{Stævneplanlægning til Kidzliga i floorball er tidskrævende, og der kan opstå fejl, når det gøres manuelt. Derudover er det svært at lave ændringer i en eksisterende stævneplan.}
+\\\\
+Herefter blev der designet og efterfølgende implementeret en løsning til dette problem. Løsningen bestod i et C-program, som også blev vurderet, i forhold til om det har overholdt de krav, der blev sat op.
 \\
-Herefter blev der designet og efterfølgende implementeret en løsning til dette problem. Løsningen er også blevet vurderet, i forhold til om den har overhold de krav, der blev sat op. 
-På baggrund af alt dette laves der i dette afsnit en konklusion på, om problemstillingen er blevet løst.
+På baggrund af alt dette laves der i dette afsnit en konklusion på, om problemformuleringen er blevet løst.
 \\\\
-Målet med dette projekt er at gøre det muligt at lave en stævneplan hurtigere og med færre fejl, end det kan gøres manuelt. Desuden var det også målet at gøre det lettere og hurtigere at rette en allerede færdig stævneplan. Som det kan ses i afsnit \ref{ch:vurdering}, er dette mål blevet opfyldt.
+Målet med dette projekt er at gøre det muligt at lave en stævneplan hurtigere og med færre fejl, end det kan gøres manuelt. Desuden er det også målet at gøre det lettere og hurtigere at rette en eksisterende stævneplan.
+\\
+% Konklusion på at programmet kan lave en stævneplan hurtigere. 
+Kravet om at programmet skal være hurtigere, til at oprette en stævneplan er opfyldt. Da det er afprøvet hvor lang tid det tager at sammensætte en stævneplan i afsnit \ref{afsnit:test}. 
 \\\\
-% Afsnit om en lille test jeg lavede, ved ikke om det skal med. Kunne flyttes til andet afsnit, eller et bilag
-% Det antages, at programmet er i stand til at lave en stævneplan hurtigere end et menneske. På trods af at der ikke er foretaget nogen test i dette projekt, der afgør, hvor hurtigt et menneske kan gøre det. Men der er blevet foretaget tests af, hvor lang tid visse funktioner i programmet tager. Testen, der kan findes i kildekode \ref{code:timeTest}, er foretaget på funktionen \textbf{\textit{createNewTournament}}. Da visse dele af denne funktion er afhængig af brugeren, og dermed dennes tidsforbrug, er de ikke blevet testet. Den del af processen, der er testet, er fra linje 20 i kildekode \ref{code:createNewTournament} på side \pageref{code:createNewTournament}, og frem til og med kaldet af \textbf{\textit{printingMenu}} i linje 60. Det bemærkes, at hver test blev foretaget fem gange, og det længste tidsforbrug er præsenteret her. Denne del af funktionen tager 0,306 sekunder. Det er også testet, hvor langt tid funktionen \textbf{\textit{printProgram}} tager om at skrive stævneplanen ud til terminalen. Denne proces tog 0,195 sekunder. \\
-% I en virkelig situation skal der selvfølgelig tages højde for, at brugeren skal bruge tid til at indtaste indformation. Men det antages, at selv med dette yderligere tidforbrug lagt til, vil programmet være hurtigere til at udarbejde en stævneplan.
-
-% \begin{listing}
-% \begin{minted}[frame=lines, framesep=3mm, baselinestretch=1, linenos, bgcolor=LightGray]{c}
-
-%clock_t begin = clock();
-
-%/* Proces der testes */
-
-%clock_t end = clock();
-%double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-
-% \end{minted}
-% \captionof{listing}{Koden bruges til at måle tidsforbruget af en proces. Dette gøres ved at måle antallet af clock-ticks, der bruges af en proces, og ved brug af \textbf{\textit{CLOCKS\_PER\_SEC}} omregnes dette til sekunder. Dette kodeeksempel bruger standardbiblioteket time.h}
-% \label{code:timeTest}
-% \end{listing}
-
-Det er også et krav, at stævneplanen skal have færre fejl end en plan, der er lavet manuelt. Dog kan en stævneplan selvfølgelig ikke have færre end nul fejl og derfor ikke være bedre end en manuelt udarbejdet stævneplan uden nogle fejl. 
-Dette krav opfyldes som konsekvens af programmets fremgangsmåde. Programmet sammensætter en tilfældig plan, runde efter runde. Hvis den udarbejder en plan, der bryder nogle af de opsatte regler, forsøger programmet at lave rettelser. Hvis det ikke er muligt at korrigere planen, bliver der i stedet udviklet en helt ny plan fra bunden. Derfor vil det resulterende program aldrig bryde med nogle af de hårde regler, der blev sat som krav. 
+% Konklusion på at programmet kan lave en plan med færre fejl.
+Kravet om at minimere fejl, opfyldes som konsekvens af programmets fremgangsmåde. Programmet sammensætter en tilfældig plan, runde efter runde. Hvis den udarbejder en runde, der bryder nogle af de opstillede regler, sammensættes runden på ny. Hvis det ikke er muligt at korrigere planen, bliver der i stedet udviklet en helt ny plan fra bunden. Derfor vil det resulterende program aldrig bryde med nogen af floorball-reglerne, der blev sat som krav. 
 \\\\
-I problemformuleringen stilles der også krav, til at en stævneplan skal være mere fleksibelt. Altså skal det være muligt at redigere planen. Dette bliver specificeret yderligere i kravene til programmet, hvor der står, at det skal være muligt at tilføje og fjerne hold.\\
-Dette krav opfyldes ved at give en bruger mulighed for at tilgå en menu, hvorfra det er muligt at fjerne eller tilføje ét eller flere hold. I denne menu er der også mulighed for at lave en helt ny stævneplan, hvis der ønskes en ny, uden at ændre på antallet af deltagende hold.
+% Konklusion på fleksibilitet
+Desuden stilles der krav, til at en stævneplan skal være mere fleksibel, ved at give mulighed for at redigere planen. Dette bliver specificeret yderligere i kravene til programmet, hvor der står, at det skal være muligt at tilføje og fjerne hold.\\
+Dette krav opfyldes ved at give en bruger mulighed for at tilgå en menu, hvorfra det er muligt at fjerne eller tilføje ét eller flere hold. I denne menu er der også mulighed for at lave en helt ny stævneplan, fra en eksisterende plan, uden at ændre på de deltagende hold.
 \\
 Den stævneplan, der bliver udarbejdet efter redigering, vil blive opstillet tilfældigt. Hvilket betyder, at en stævneplan, der er et resultat af redigering, ikke nødvendigvis vil ligne den originale.
 \\\\
+Der er også stillet et formål op for projektet, i studieordningen. Dette formål er: 
+\par
+\textit{At den studerende opnår færdigheder i problemorienteret projektarbejde i en gruppe samt viden om sammenhænge mellem problemdefinition, modeldannelsers rolle i forståelse og konstruktion af programmer, og programmer som løsning på et problem i en problemstillings kontekst. Endvidere at opnå viden om fagets indhold og fagets videre potentialer} \citep{studieordning}
+\par
+Dette formål er opnået, da der er blevet arbejdet problemorienteret, ved at finde og arbejde med en konkret problemstilling fra den virkelige verden. Dette projekt er også blevet lavet i en gruppe. Gruppemedlemmerne har opnået viden omkring sammenhængen mellem problemdefinition, modeldannelsers rolle i forståelse og konstruktion af programmer, og programmer som løsning på et problem i en problemstillings kontekst, gennem arbejdet med programmet, rapporten og projektet. Der er opnået en viden omkring fagets indhold og dets videre potentialer gennem den erfaring der er blevet skabt ved at have gennemført p1-projektet. 
+\\\\
 % Kort opsummering
-Løsningen er altså i stand til at lave stævneplaner, til kidzliga-stævner, hurtigt og uden fejl. En sådan plan vil være fleksibel, da der er mulighed for at lave ændringer hurtigt. Det er også muligt at videreudvikle dette program til at tage hensyn til flere former for turneringer og forskellige sportsgrene.
+Formålet for for projektet er derfor også opnået gennem arbejdet med projektet.
+\par
+Løsningen for projektet er også i stand til at lave stævneplaner, til kidzliga-stævner, hurtigt og uden brud af floorball-regler. En sådan plan vil være fleksibel, da der er mulighed for at lave ændringer hurtigt. Det er også muligt at udvide dette program så der tages hensyn til flere former for turneringer og forskellige sportsgrene.
 
 

@@ -191,6 +191,14 @@
 \usepackage{listings}
 \renewcommand\listingscaption{Kildekode}
 
+\newfloat{Kodeeksempel}{h}
+
+\usepackage{caption}
+\newenvironment{source}{\captionsetup{type=listing}}{}
+% \SetupFloatingEnvironment{listing}{name=Kildekode}
+
+% \captionof{listing}{weigh\_neighbour\_edges\_with\_passenger funktionen}
+% \label{code:weigh_neighbour_edges_with_passenger}
 
 
 
@@ -198,3 +206,10 @@
 % skriv \par for halvt linieskift 
 \setlength{\parindent}{0em}    %bestemmer indrykning på linie
 \setlength{\parskip}{0.5em}    %bestemmer størrelse af linieskift
+
+
+% For at kunne lave kolonner
+\usepackage{multicol}
+
+
+\DeclareCaptionLabelFormat{continued}{Continued #1 ̃#2} \captionsetup[ContinuedFloat]{labelformat=continued}

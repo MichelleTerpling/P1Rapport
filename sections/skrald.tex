@@ -142,3 +142,32 @@ int main(void) {
   %      \item En færdig plan der skal opdateres.
   %      \item Hold der skal fjernes eller tilføjes.
    % \end{enumerate}
+
+
+% \\\\
+% Programmet blev til at starte med, udviklet med den tanke, at der skulle være to forskellige funktioner der redigerede stævneplanen. Disse blev navngivet \textbf{\textit{addTeams}} og \textbf{\textit{removeTeams}} (Se bilag \ref{ch:appFlabel}). De blev kombineret til \textbf{\textit{modifyTeams}}. Funktionerne tog sig af hver deres del af redigeringen, og gjorde det på lidt forskellige måder. I \textbf{\textit{addTeams}} bliver \textbf{\textit{number\_of\_teams}} talt op \textit{før} der bliver allokeret plads til \textbf{\textit{all\_teams}} arrayet. Dette er fordi der skal være plads til de nye hold. I \textbf{\textit{removeTeams}}, er dette ikke nødvendigt, da de hold der bliver fjernet, får markeringen \textbf{\textit{EMPTY}}, der gør at resten af programmet ignorerer dette hold.
+% \par
+% Den måde hver funktion opfører sig på, alt efter om det er første gang de bliver kaldt eller ej, er også lidt forskellig. I begge funktioner bliver holdnavne og niveau scannet ind den første gang, men efter første gang, udvides \textbf{\textit{all\_teams}} i \textbf{\textit{addTeams}}, men dette sker ikke i \textbf{\textit{removeTeams}}. Det skyldes som sagt at holdene ikke bliver fjernet, men bare bliver markeret med \textbf{\textit{EMPTY}}.
+% \par
+% Der opstår også en lille forskel mellem funktionerne, når de nuværende hold skal printes med \textbf{\textit{printTeams}}. I \textbf{\textit{addTeams}}, skal antallet af nye hold trækkes fra \textbf{\textit{number\_of\_teams}}, da print funktionen ellers ville gå ud over den plads der er allokeret til \textbf{\textit{all\_teams}}. Igen er dette ikke nødvendigt i \textbf{\textit{removeTeams}}, da \textbf{\textit{number\_of\_teams}} ikke har ændret sig.
+% \par
+% I forhold til funktionen \textbf{\textit{getTeams}}, er der forskel på nogle af inputparametrene, da der er forskel på den måde informationer skal scannes ind fra terminalen. Funktionen \textbf{\textit{addTeams}}, bliver nødt til at kende både holdets niveau og navn, \textbf{\textit{removeTeams}} behøver kun holdets navn.
+% \par
+% Endeligt er der forskel på de hvordan hver funktion afsluttes. Funktionen \textbf{\textit{addTeams}}, afsluttes med at kalde funktionen \textbf{\textit{copyTeams}}, som kopierer alle de tilføjede hold over i \textbf{\textit{all\_teams}}. I \textbf{\textit{removeTeams}} bliver de hold der skal fjernes, markeret med \textbf{\textit{EMPTY}} ved brug af funktionen \textbf{\textit{deleteTeams}}, hvorefter disse hold bliver flyttet til de sidste pladser i \textbf{\textit{all\_teams}} med funktionen \textbf{\textit{sortArrayByLevel}}.
+
+
+% Denne test kan ikke sammenlignes direkte med, hvor hurtigt et menneske kan lægge en stævneplan, da dette ikke er testet.  
+%Det antages, at programmet er i stand til at lave en stævneplan hurtigere end et menneske. 
+% På trods af at der ikke er foretaget nogen test i dette projekt, der afgør, hvor hurtigt et menneske kan gøre det. Men der er blevet foretaget tests af, hvor lang tid visse funktioner i programmet tager. 
+
+
+% \section{Test}
+% Test af funktioner
+
+%\subsubsection{Fjern et hold}
+%I dette afsnit gennemgås \textbf{\textit{removeTeams}}-funktionen, med forklaringer og argumenter for den valgte implementering. Funktionens overordnede funktion er at fjerne de hold brugeren, skriver som input, fra et eksisterende kampprogram.
+%\par
+%Denne funktion bliver kaldt i \textbf{\textit{editMenu}}-funktion, hvis brugren vælger at slette et eksisterende hold. \textbf{\textit{removeTeams}}-funktionen kaldes med en fil-pointer til "turneringsplan.txt", en variable kaldet sential bliver også kaldt. \textbf{\textit{all\_teams}}-arrayet bliver også kaldt som en pointer og med en int pointer til \textbf{\textit{number\_of\_teams}}. Funktionen returnere et \textbf{\textit{all\_teams}}-array af typen team, som bliver brugt videre i processen i at lave et redigeret kampprogram. 
+%\par
+%Når funktionen køres bliver variablerne int \textbf{\textit{team\_index}}, int \textbf{\textit{number\_of\_removed\_teams}} og team \textbf{\textit{*removed\_teams}}, som er en pointer til et array, initialiseret.
+%I linje ni og ti prompter og scanner programmet for antallet af hold der skal fjernes. Det antal af hold der skal fjernes, bliver sat over i \textbf{\textit{number\_of\_removed\_teams}}. Denne variable gør det muligt at finde ud af hvor meget plads der skal allokeres til arrayet \textbf{\textit{removed\_teams}} i linje 13.
